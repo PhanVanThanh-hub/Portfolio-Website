@@ -2,8 +2,8 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
  
 import { makeStyles } from '@mui/styles';
-import Image from '../components/image'; 
-import Information from '../components/information';
+import Image from '../components/Image'; 
+import Information from '../components/Information';
 const useStyles = makeStyles({
  
    root:{
