@@ -15,6 +15,9 @@ const useStyles = makeStyles({
    cardImage:{
       height:"70vh",
       position:"relative",
+      '@media ( max-width: 480px)':{
+         height: "30vh"
+      }
    }
     
  });
@@ -24,7 +27,10 @@ function Image() {
       <div>
          
             <Card  className={classes.cardImage}
-               sx={{position: "absolute",top: "100px",left: "100px",width:"60%",borderRadius:"30px" ,background: "#333",}}>
+               sx={{position: "absolute",top: "50px",left: "50px",width:"60%",borderRadius:"30px" ,background: "#333",
+               '@media ( max-width: 480px)':{
+                  display: "none"
+              }}}>
             </Card>
             <Card className={classes.cardImage} sx={{width:"60%",borderRadius:"30px" }}>
                <CardMedia

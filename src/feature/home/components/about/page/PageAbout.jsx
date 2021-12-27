@@ -5,6 +5,10 @@ import Image from '../components/Image';
 import Content from '../components/Content';
 import useWindowPosition from '../../../../../hook/useWindowPosition';
 import { Collapse } from '@mui/material';
+import {
+    
+   useMediaQuery,
+ } from "@mui/material";
 const useStyles = makeStyles({
  
    root:{
@@ -20,10 +24,19 @@ const useStyles = makeStyles({
  });
 function PageAbout() {
    const classes = useStyles()
-   const checked = useWindowPosition('information');
+   let checked = useWindowPosition('information');
+   const largeScreen = useMediaQuery('(min-width:480px)');
+   if(largeScreen===false){
+      checked=true
+   }
+   
    return (
-      <div style={{padding:"16px",height:"100vh"}}>
-         <Grid container  spacing={1} direction="row" alignItems="center" justifyContent="center">
+  
+         <Grid container  spacing={1} direction={largeScreen?"row":"column"} alignItems="center" justifyContent="center"
+            sx={{height:"100vh",padding:"16px",'@media ( max-width: 480px)':{
+                  height:"100%",marginTop: "50px"
+              }}}
+         >
             <Grid item xs={6}   className={classes.root}>
                <Collapse in={checked} {...(checked ? { timeout: 2000 } : {})}> 
                   <Image/>
@@ -35,7 +48,7 @@ function PageAbout() {
                </Collapse>
             </Grid>
          </Grid>
-      </div>
+     
    );
 }
 

@@ -9,7 +9,7 @@ function App() {
       <Header/>
       <ScrollToTop>
         <Switch>
-          <Route path="/">
+          <Route path="/" exact>
             <Home/>
           </Route>
           <Route path="/cv">

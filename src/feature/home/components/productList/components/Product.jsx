@@ -5,13 +5,14 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
- 
+import { Collapse } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
  
 function Product(props) {
-   const {product} = props
+   const {product,checked} = props
    return (
+      <Collapse in={checked} {...(checked ? { timeout: 2000 } : {})}> 
       <Card sx={{ maxWidth: 345,height:"500px" ,overflow:"hidden",background:"rgba(97, 93, 95, 0.45)"}}>
          <CardHeader
          title={product.name}
@@ -58,6 +59,7 @@ function Product(props) {
             </Grid>
          </CardContent>
       </Card>
+      </Collapse>
    );
 }
 

@@ -24,10 +24,17 @@ function InformationContact() {
    return (
       <Grid container spacing={3}  direction="column"    >
          <Grid item xs={12} >
-            <Typography sx={{fontSize: "60px"}}>Let's discuss your project</Typography>
+            <Typography sx={{fontSize: "60px",'@media ( max-width: 480px)':{
+                           fontSize: "30px"
+            }}}>
+               Let's discuss your project
+            </Typography>
          </Grid>
          <Grid item xs={12}>
-            <Grid container spacing={2} className={classes.root}>
+            <Grid container spacing={2} className={classes.root} sx={{'@media ( max-width: 480px)':{
+                    margin: "20px 0px",
+                    width: "100%",
+               }}}>
                <Grid item xs={12}>
                   <div> 
                      <img src={phone} alt=""/>

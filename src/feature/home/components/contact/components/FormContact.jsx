@@ -31,7 +31,9 @@ function FormContact() {
    }
    return (
       <> 
-         <Typography sx={{fontWeight: "200"}}>
+         <Typography sx={{fontWeight: "200",'@media ( max-width: 480px)':{
+                    display:"none"
+               }}} >
             <b>What’s your story?</b> Get in touch. Always available for
                freelancing if the right project comes along. me.
          </Typography>

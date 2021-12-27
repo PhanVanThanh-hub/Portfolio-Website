@@ -25,14 +25,17 @@ function Content() {
                aliquip ex ea commodo consequat duis aute irure dolor in reprehende
             </Typography>
          </Grid>
-         <Grid item xs={12} sx={{marginTop:"50px"}} >
+         <Grid item xs={12} sx={{marginTop:"50px",'@media ( max-width: 480px)':{
+                        display: "none"
+                    }}} >
             <Grid container  alignItems="center" justifyContent="space-between">
                <Grid item xs={4} alignItems="center">
                   <CardMedia
                      component="img"
                      src={award}
                      alt="award"
-                     sx={{width: "120px",height: "120px",borderRadius: "20px",}}
+                     sx={{width: "120px",height: "120px",borderRadius: "20px",
+ }}
                   />
                </Grid>
                <Grid item xs={8}>

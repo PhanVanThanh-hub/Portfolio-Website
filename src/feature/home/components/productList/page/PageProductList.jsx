@@ -6,24 +6,37 @@ import Product from '../components/Product';
 import datas from '../components/data'; 
 import Title from '../components/Title';
 import useWindowPosition from '../../../../../hook/useWindowPosition';
-import { Collapse } from '@mui/material';
-function PageProductList() {
+import {
     
-   const checked = useWindowPosition('about');
+   useMediaQuery,
+ } from "@mui/material";
+function PageProductList() {
+   const largeScreen = useMediaQuery('(min-width:480px)');
+   let checked = useWindowPosition('about');
+   if(largeScreen===false){
+      checked=true
+   }
    return (
-      <Box sx={{padding: "50px 100px",height:"100vh",display: "flex",flexDirection: "column",alignItems: "center",}}>
-         <Collapse in={checked} {...(checked ? { timeout: 2000 } : {})}> 
+      <Box sx={{padding: "50px 100px",height:"100vh",display: "flex",flexDirection: "column",alignItems: "center",
+               '@media ( max-width: 480px)':{
+                     height:"100%",
+                     padding:"10px",
+               }}}>
+          
             <Title/>
-            <Grid container>
+          
+            <Grid container direction={largeScreen?"row":"column"}>
                {datas.map((data)=>
-                  <Grid item xs={4} >
-                     <Product  product = {data}/>
+                  <Grid item xs={4} sx={{'@media ( max-width: 480px)':{
+                     marginTop:"10px"
+               }}} >
+                     <Product  product = {data} checked={checked}/>
                   </Grid>
                )}
                   
                
             </Grid>
-         </Collapse>
+        
       </Box>
    );
 }
