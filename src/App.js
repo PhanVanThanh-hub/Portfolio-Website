@@ -1,16 +1,22 @@
- 
-import './App.css';
-import Intro from './feature/intro/index';
-import About from './feature/about/index';
-import ProductList from './feature/productList';
-import Contact from './feature/contact';
+import Header from './components/header/Header';
+import Home from './feature/home/index';
+import CV from './feature/work/index';
+import ScrollToTop from './constants/ScrollToTop';
+import { Route, Switch } from 'react-router-dom';
 function App() {
   return (
-    <div  >
-      <Intro/>
-      <About/>
-      <ProductList/>
-      <Contact/>
+    <div>
+      <Header/>
+      <ScrollToTop>
+        <Switch>
+          <Route path="/">
+            <Home/>
+          </Route>
+          <Route path="/cv">
+            <CV/>
+          </Route>
+        </Switch>
+      </ScrollToTop> 
     </div>
   );
 }
