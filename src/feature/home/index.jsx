@@ -5,6 +5,7 @@ import { makeStyles } from '@mui/styles';
 import { IconButton, Collapse } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link as Scroll } from 'react-scroll';
+import Box from "@mui/material/Box";
 const useStyles = makeStyles((theme) => ({
    root: {
       display: 'flex',
@@ -46,7 +47,7 @@ function Home() {
       setChecked(true);
    }, []);
    return (
-      <div>
+      <div  >
          <div className={classes.root} id="header" >
             <Collapse id ="collapse"
             in={checked}
@@ -66,7 +67,10 @@ function Home() {
             </div>
             </Collapse>
          </div>
-         <HomePage/>
+         <Box  sx={{ display: "flex", bgcolor: 'background.primary', color: 'text.primary', }}>
+            <HomePage/>
+         </Box>
+          
       </div>
    );
 }

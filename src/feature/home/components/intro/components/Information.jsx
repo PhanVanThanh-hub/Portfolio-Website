@@ -20,9 +20,7 @@ const useStyles = makeStyles({
       "75%": { 
          transform: "translateY(-150px)"
       },
-      "100%": { 
-         transform: "translateY(-200px)"
-      },
+       
     },
    itemText: {
       height:"50px",
@@ -41,13 +39,13 @@ const useStyles = makeStyles({
       top:"100px"
    }
  });
-const roles=["Web Developer","UI/UX Developer","Photographer","Writer","Content Cerator"]
+const roles=["Web Developer","FrontEnd","BackEnd","Crawl Data" ]
 
 function Information(props) {
    const classes = useStyles()
    const {checked} = props
    return (
-      <Collapse in={checked} orientation="horizontal" {...(checked ? { timeout: 2000 } : {})}> 
+      <Collapse in={checked}  {...(checked ? { timeout: 2000 } : {})}> 
          <Grid container spacing={3}  >
             <Grid item xs={12}>
                <Typography variant="h2" sx={{fontSize:"30px",fontWeight:"300"}}>Hello,My name  is</Typography>

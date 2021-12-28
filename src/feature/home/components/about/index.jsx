@@ -1,11 +1,12 @@
 import React from 'react';
 import PageAbout from './page/PageAbout';
+import Box from "@mui/material/Box";
 function About() {
     
    return (
-      <div id="about" >
+      <Box id="about"  >
          <PageAbout/>
-      </div>
+      </Box>
    );
 }
 

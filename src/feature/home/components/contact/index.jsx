@@ -1,11 +1,11 @@
 import React from 'react';
 import PageContact from './page/PageContact';
-
+import Box from "@mui/material/Box";
 function Contact() {
    return (
-      <div id="contact">
+      <Box id="contact"  >
          <PageContact/>
-      </div>
+      </Box>
    );
 }
 

@@ -2,7 +2,13 @@ import React  from 'react';
 import { makeStyles } from '@mui/styles';
 import { AppBar, Toolbar } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Model from '../../layout/components/layout-model/layoutModel';
+import DrawerUI from './Drawer';
  
+import {
+    
+   useMediaQuery,
+ } from "@mui/material";
 const useStyles = makeStyles((theme) => ({
   
    appbar: {
@@ -31,24 +37,35 @@ const useStyles = makeStyles((theme) => ({
    }
    
 }));
+
 export default function Header() {
    const classes = useStyles();
+   const largeScreen = useMediaQuery('(min-width:480px)');
    return (
       <AppBar className={classes.appbar}  elevation={1}sx={{background:"#fff"}}>
          <Toolbar className={classes.appbarWrapper}>
             <h1 className={classes.appbarTitle}>
                My<span className={classes.colorText}>Profile.</span> 
             </h1>
-            <div style={{display: "flex",flexDirection: "row",marginLeft: "16px",webkitBoxAlign: "center",
-                        alignItems: "center",}}>
-               <Link to="/" className={classes.link}  >
-                           Home
-               </Link>
-           
-               <Link to="/cv" className={classes.link}>
-                  CV
-               </Link>
-            </div>
+            {
+               largeScreen?
+               <div style={{display: "flex",flexDirection: "row",marginLeft: "16px",webkitBoxAlign: "center",
+                           alignItems: "center",}}>
+                  <Link to="/" className={classes.link}  >
+                              Home
+                  </Link>
+            
+                  <Link to="/cv" className={classes.link}>
+                     CV
+                  </Link>
+                  <Model/>
+               </div>
+               :<>
+                  <DrawerUI/>
+                  <Model/>
+               </>
+            }
+             
          </Toolbar>
       </AppBar>
    );

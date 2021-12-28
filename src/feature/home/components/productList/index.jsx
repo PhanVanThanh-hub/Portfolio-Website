@@ -1,11 +1,11 @@
 import React from 'react';
 import PageProductList from './page/PageProductList';
-
+import Box from "@mui/material/Box";
 function ProductList() {
    return (
-      <div id="product">
+      <Box id="product" >
          <PageProductList/>
-      </div>
+      </Box>
    );
 }
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import PageIntro from './page/PageIntro';
-
+import Box from "@mui/material/Box";
 function Intro() {
    return (
-      <div id="information">
+      <Box id="information"  >
          <PageIntro/>
-      </div>
+      </Box>
    );
 }
 

@@ -3,20 +3,23 @@ import Home from './feature/home/index';
 import CV from './feature/work/index';
 import ScrollToTop from './constants/ScrollToTop';
 import { Route, Switch } from 'react-router-dom';
+import ToggleColorMode from './components/UI/theme';
 function App() {
   return (
     <div>
-      <Header/>
-      <ScrollToTop>
-        <Switch>
-          <Route path="/" exact>
-            <Home/>
-          </Route>
-          <Route path="/cv">
-            <CV/>
-          </Route>
-        </Switch>
-      </ScrollToTop> 
+      <ToggleColorMode> 
+        <Header/>
+        <ScrollToTop>
+          <Switch>
+            <Route path="/" exact>
+              <Home/>
+            </Route>
+            <Route path="/cv">
+              <CV/>
+            </Route>
+          </Switch>
+        </ScrollToTop> 
+      </ToggleColorMode>
     </div>
   );
 }

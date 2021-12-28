@@ -1,7 +1,7 @@
 import React from 'react';
 import CardMedia from '@mui/material/CardMedia';
 import { makeStyles } from '@mui/styles';
-import card from '../../../../../static/image/about/baekhyun_exo_4_0830_SRRC.jpg';
+import card from '../../../../../static/image/about/Open Peeps - Standing.png';
 import Card from '@mui/material/Card';
 
  
@@ -32,10 +32,10 @@ function Image() {
                   display: "none"
               }}}>
             </Card>
-            <Card className={classes.cardImage} sx={{width:"60%",borderRadius:"30px" }}>
+            <Card className={classes.cardImage} sx={{width:"60%",borderRadius:"30px",bgcolor: 'card.primary'  }}>
                <CardMedia
                   component="img"
-                  sx={{height:"100%",width:"100%",objectFit:"cover"}}
+                  
                   src={card} alt="Paella dish"
                />
             </Card> 

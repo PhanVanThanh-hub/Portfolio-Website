@@ -12,16 +12,14 @@ function Title() {
                   }}}  >
          <Grid item xs={12}>
             <Typography sx={{fontSize:"50px",fontWeight: "600",}}>
-               Create & inspire. It's Lama
+               Some projects I've done
             </Typography>
          </Grid>
          <Grid item xs={12} sx={{ margin:"20px 0px",'@media ( max-width: 480px)':{
                      display:"none"
                }}}>
             <Typography>
-                  Lama is a creative portfolio that your work has been waiting for.
-                  Beautiful homes, stunning portfolio styles & a whole lot more awaits
-                  inside.
+               I used the knowledge that I learned on my own to complete them
             </Typography>
          </Grid>
       </Grid>

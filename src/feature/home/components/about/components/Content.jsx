@@ -13,18 +13,16 @@ function Content() {
          </Grid>
          <Grid item xs={12} sx={{margin:"20px 0px"}}>
             <Typography> 
-               It is a long established fact that a reader will be distracted by the
-               readable content.
+               I am currently a 3rd year student at Duy Tan University. 
+               I can use javascript and python languages along with frameworks for web development.
             </Typography>
          </Grid>
-         <Grid item xs={12}  >
+         {/* <Grid item xs={12}  >
             <Typography sx={{fontWeight: "300",fontFamily: "Roboto"}}>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-               minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-               aliquip ex ea commodo consequat duis aute irure dolor in reprehende
+               I am currently a 3rd year student at Duy Tan University. 
+               I can use javascript and python languages along with frameworks for web development.
             </Typography>
-         </Grid>
+         </Grid> */}
          <Grid item xs={12} sx={{marginTop:"50px",'@media ( max-width: 480px)':{
                         display: "none"
                     }}} >

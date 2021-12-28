@@ -44,7 +44,7 @@ function PageIntro() {
                <Information checked={checked}/>
                 
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6} >
                   
                <Image checked={checked}/>
              
