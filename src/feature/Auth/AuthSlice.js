@@ -5,42 +5,18 @@ import StorageKeys from '../../constants/storage-keys';
 export const login = createAsyncThunk(
     'auth/login',
     async (payload) => {
-        try {
-            // const isAdmin = await authApi.checkAdmin(payload);
-            
-            // localStorage.setItem(StorageKeys.admin,  JSON.stringify(isAdmin.data.message)|| {});             
+        try {            
             const response = await authApi.login(payload);
             localStorage.setItem(StorageKeys.access, response.data.access);
             localStorage.setItem(StorageKeys.refresh, response.data.refresh);
-            // const username = JSON.parse(response.config.data).username
-            // const responseUser = await authApi.getUser({ username: username })
-            // const user = {...responseUser.data[0]}
-            // try{
-            //     const responseProfile = await authApi.getProfile(user)
-           
-            //     const profile = {...responseProfile.data.user}
-                
-            //     const data = {
-            //         ...user,
-            //         ...profile,
-                    
-            //     }
-            //     console.log("data:",data)
-            //     localStorage.setItem(StorageKeys.user, JSON.stringify(data));
-            //     // console.log("data:",data)
-            //     return data
-            // }
-            // catch (error) {
-            //     const data = {
-            //         ...user,
-                     
-                    
-            //     }
-            //     console.log("data:",data)
-            //     localStorage.setItem(StorageKeys.user, JSON.stringify(data));
-            //     // console.log("data:",data)
-            //     return data
-            // }
+            const username = JSON.parse(response.config.data).username
+            const responseUser = await authApi.getUser({ username: username })
+            const user = {...responseUser.data[0]}
+            const data = {...user,}
+            localStorage.setItem(StorageKeys.user, JSON.stringify(data));
+            
+            return data
+          
              
         } catch (error) {
             console.log("error:",error)
@@ -52,7 +28,7 @@ export const login = createAsyncThunk(
 const AuthSlice = createSlice({
     name: 'auth',
     initialState: {
-        accuracy:localStorage.getItem(StorageKeys.admin)  ,
+        accuracy:localStorage.getItem(StorageKeys.user)  ,
         current: JSON.parse(localStorage.getItem(StorageKeys.user)) || {},
          
         settings: {},
@@ -74,9 +50,8 @@ const AuthSlice = createSlice({
        
 
         [login.fulfilled]: (state, action) => {
-          
             state.current = action.payload;
-            state.accuracy = localStorage.getItem(StorageKeys.admin);
+            state.accuracy = localStorage.getItem(StorageKeys.user);
         }
         
     }

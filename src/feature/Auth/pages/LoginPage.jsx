@@ -14,7 +14,10 @@ function LoginPage(props) {
     const onSubmit = async (values) => {
         try {
             const actions = login(values)
+            
             await dispatch(actions)
+             
+             
         } catch (error) {
             console.log(error)
         }

@@ -2,7 +2,7 @@
  
 function CV() {
    return (
-      <div>
+      <div style={{height:"100vh",backgroundColor:"red"}}>
          CV
       </div>
    );
