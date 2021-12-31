@@ -39,7 +39,7 @@ const useStyles = makeStyles({
       top:"100px"
    }
  });
-const roles=["Web Developer","FrontEnd","BackEnd","Crawl Data" ]
+ 
 
 function Information(props) {
    const classes = useStyles()
@@ -51,11 +51,11 @@ function Information(props) {
                <Typography variant="h2" sx={{fontSize:"30px",fontWeight:"300"}}>Hello,My name  is</Typography>
             </Grid>
             <Grid item xs={12}>
-               <Typography variant="h1" sx={{fontSize:"60px" }}>Phan Van Thanh</Typography>
+               <Typography variant="h1" sx={{fontSize:"60px" }}>{props.name}</Typography>
             </Grid>
             <Grid item xs={12}>
                <List sx={{height:"50px",overflow:"hidden"}}  >
-                  {roles.map((role)=>
+                  {props.roles.map((role)=>
                      <ListItem className={classes.item} >
                         <ListItemText className={classes.itemText}   primary={<Typography sx={{fontSize:"30px",fontWeight:"bold",}}>{role}</Typography>}/>
                      </ListItem>
@@ -64,9 +64,7 @@ function Information(props) {
             </Grid>
             <Grid item xs={12}>
                <div>
-                  I design and develop services for customers of all sizes,
-                  specializing in creating stylish, modern websites, web services and
-                  online stores.
+                  {props.des}
                </div>
             </Grid>
          </Grid>

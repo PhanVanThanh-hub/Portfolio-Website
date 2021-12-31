@@ -29,7 +29,7 @@ function App() {
         <ScrollToTop>
           <Switch>
             <Route path="/" exact>
-              {/* <Home/> */}
+               <Home/> 
             </Route>
             <Route path="/cv">
               <CV/>

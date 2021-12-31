@@ -30,6 +30,9 @@ function PageIntro() {
    if(largeScreen===false){
       checked=true
    }
+   const roles=["Web Developer","FrontEnd","BackEnd","Crawl Data" ]
+   const name="Phan Van Thanh"
+   const des= "I design and develop services for customers of all sizes,specializing in creating stylish, modern websites, web services andonline stores."
    return (
       <div>
          <Grid container  spacing={0}  direction={largeScreen?"row":"column"} 
@@ -41,7 +44,7 @@ function PageIntro() {
          >
             <Grid item xs={6}   className={classes.root}>
                   
-               <Information checked={checked}/>
+               <Information checked={checked} name={name} des={des} roles={roles}/>
                 
             </Grid>
             <Grid item xs={6} >

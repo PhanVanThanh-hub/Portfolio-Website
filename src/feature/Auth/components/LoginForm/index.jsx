@@ -41,7 +41,7 @@ function LoginForm(props) {
     
     return (
         <div style={{width: "100%"}}>
-            <form initialValues={{ remember: true }} onSubmit={form.handleSubmit(handleSubmit)}>
+            <form initialValues={{ remember: true }}  onSubmit={form.handleSubmit(handleSubmit)}>
                 <Grid container spacing={3} direction="column" justifyContent="center" alignItems="center">
                     <Grid item xs={12} sx={{width:"100%"}}>
                         <InputField form={form} name="username" label="Username" />
