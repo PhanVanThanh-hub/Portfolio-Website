@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import themeReducer from '../components/UI/themeSlice'
 import authReducer from '../feature/Auth/AuthSlice'
-import chipSlice from '../feature/Admin/components/intro/components/ChipSlice';
+import introSlice from '../feature/Admin/components/intro/components/IntroSlice';
 const rootReducer  = {
   mode: themeReducer,
   auth: authReducer,
-  chip:chipSlice,
+  intro:introSlice,
 }
 
 const store = configureStore({

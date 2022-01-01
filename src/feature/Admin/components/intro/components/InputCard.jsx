@@ -4,7 +4,7 @@ import { makeStyles } from '@mui/styles';
  
 import { InputBase,Button ,IconButton} from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
-import {addChip} from './ChipSlice';
+import {addChip} from './IntroSlice';
 import { useDispatch } from 'react-redux';
 const useStyle=makeStyles((theme)=>({
    card:{

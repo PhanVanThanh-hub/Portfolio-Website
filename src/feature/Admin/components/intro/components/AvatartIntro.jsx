@@ -11,6 +11,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
 import Button from '@mui/material/Button';
+import {useDispatch } from 'react-redux';
+import {changeAvatar} from './IntroSlice';
 const image=[avatar1,avatar2,avatar3,avatar4,avatar5,avatar6]
 const useStyles = makeStyles({
    root: {
@@ -25,8 +27,18 @@ const useStyles = makeStyles({
 export default function AvatarIntro() {
    const classes= useStyles();
    const [active,setActive]=useState(0)
+   const dispatch = useDispatch();
+   
    const chooseCard =()=>{
       console.log("hehe:",image[active])
+      const actions = changeAvatar({value:image[active]})
+      dispatch(actions)
+   }
+   const activeCard =(index)=>{
+      console.log("index:",index)
+      setActive(index)
+      const actions = changeAvatar({value:image[index]})
+      dispatch(actions)
    }
    return (
    
@@ -36,7 +48,7 @@ export default function AvatarIntro() {
          </Grid>
          {image.map((img,index)=>
             <Grid item xs={3}   >
-               <Card   value={index} onClick={() => setActive(index)} 
+               <Card   value={index} onClick={() =>activeCard(index)} 
                   sx={{ maxWidth: 175,height:233,borderRadius:"24px" ,position: "relative" }}
                   className={ active === index ? classes.choose : classes.root}
                >

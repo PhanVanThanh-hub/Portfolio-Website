@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import React, {   useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import DrawerContainer from './layout/DrawerContainer';
-import Intro from './feature/Admin/components/intro/index';
+import AdminIntro from './feature/Admin/components/intro/index';
 function App() {
   // const loginInUser = useSelector(state => state.auth.current)
    
@@ -48,7 +48,7 @@ function App() {
               <Admin/>
             </Route>
             <Route path="/intro"> 
-              <Intro/>
+              <AdminIntro/>
             </Route>
           </Switch>
         </ScrollToTop> 

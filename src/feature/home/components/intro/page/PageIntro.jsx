@@ -4,7 +4,7 @@ import { makeStyles } from '@mui/styles';
 import Image from '../components/Image'; 
 import Information from '../components/Information';
 import useWindowPosition from '../../../../../hook/useWindowPosition';
- 
+import avatar1 from '../../../../../static/image/intro/Open Peeps - Avatar.png';
 import {
    useMediaQuery,
  } from "@mui/material";
@@ -49,7 +49,7 @@ function PageIntro() {
             </Grid>
             <Grid item xs={6} >
                   
-               <Image checked={checked}/>
+               <Image checked={checked} avatar1={avatar1}/>
              
             </Grid>
              

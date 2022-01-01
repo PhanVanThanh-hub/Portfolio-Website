@@ -6,7 +6,7 @@ import {Typography } from '@mui/material';
 import InputCard from './InputCard';
 import { Collapse } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import {deleteChip} from './ChipSlice';
+import {deleteChip} from './IntroSlice';
 import Grid from '@mui/material/Grid';
 const useStyle=makeStyles((theme)=>({
    root:{
@@ -27,7 +27,7 @@ const useStyle=makeStyles((theme)=>({
  
 
 export default function Role() {
-   const chipRedux = useSelector(state => state.chip.value)
+   const chipRedux = useSelector(state => state.intro.value.chip)
   
    const dispatch = useDispatch();
    const handleDelete = (chipToDelete) => () => {
