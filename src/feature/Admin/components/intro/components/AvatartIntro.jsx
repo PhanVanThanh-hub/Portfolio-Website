@@ -1,11 +1,5 @@
 import  React,{useState,useEffect} from 'react';
 import Grid from '@mui/material/Grid';
-import avatar1 from '../../../../../static/admin/intro/Open Peeps - Avatar (1).png';
-import avatar2 from '../../../../../static/admin/intro/Open Peeps - Avatar (2).png';
-import avatar3 from '../../../../../static/admin/intro/Open Peeps - Avatar (3).png';
-import avatar4 from '../../../../../static/admin/intro/Open Peeps - Avatar (4).png';
-import avatar5 from '../../../../../static/admin/intro/Open Peeps - Avatar (5).png';
-import avatar6 from '../../../../../static/admin/intro/Open Peeps - Avatar (6).png';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -75,12 +69,12 @@ export default function AvatarIntro() {
             <Typography sx={{fontSize:"30px",fontWeight:"500px"}}>Choose avatar for Intro</Typography> 
          </Grid>
          {avatar.map((img,index)=>
-            <Grid item xs={3}   >
-               <Card   value={index} onClick={() =>activeCard(index)} 
+            <Grid item xs={3} key={index}  >
+               <Card   value={index} onClick={() =>activeCard(index)}  key={index}
                   sx={{ maxWidth: 175,height:233,borderRadius:"24px" ,position: "relative" }}
                   className={ active === index ? classes.choose : classes.root}
                >
-                  <CardMedia
+                  <CardMedia key={index}
                      component="img"
                      sx={{ position: "absolute",margin: "auto",top: "0",left: "0",right: "0",bottom: "0",}}
                      src={img.image}

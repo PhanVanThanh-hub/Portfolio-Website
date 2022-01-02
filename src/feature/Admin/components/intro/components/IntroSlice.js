@@ -1,14 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit'
-import avatar1 from '../../../../../static/admin/intro/Open Peeps - Avatar (1).png';
+
+
 export const introSlice = createSlice({
    name: 'intro',
    initialState: {
+      
       value: 
-         {chip:['Angular' ,'jQuery','Polymer','React','Vue.js',],name:"PhanVanThanh",avatar:avatar1,
-         des:"I design and develop services for customers of all sizes,specializing in creating stylish, modern websites, web services andonline stores."}
+         {chip:[],name:"PhanVanThanh",avatar:"",des:""}
       
    },
    reducers: {
+      setAvatar(state,action){
+         console.log("action:",action.payload.value)
+         state.value.avatar=action.payload.value
+      },
+      setChip(state,action){
+         const chip=action.payload.value
+         chip.map((role)=>
+            state.value.chip.push(role.name)
+         )
+      },
+      setDes(state,action){
+         console.log("action:",action.payload.value)
+         state.value.des=action.payload.value
+          
+      },
       addChip(state, action) {
           
          const value = action.payload.value
@@ -36,5 +52,5 @@ export const introSlice = createSlice({
 })
 
 const { actions, reducer } = introSlice
-export const { addChip,deleteChip,updateDes,changeAvatar} = actions
+export const { addChip,deleteChip,updateDes,changeAvatar,setChip,setDes,setAvatar} = actions
 export default reducer

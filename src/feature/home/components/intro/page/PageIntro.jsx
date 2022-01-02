@@ -1,10 +1,10 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Grid from '@mui/material/Grid';
 import { makeStyles } from '@mui/styles';
 import Image from '../components/Image'; 
 import Information from '../components/Information';
 import useWindowPosition from '../../../../../hook/useWindowPosition';
-import avatar1 from '../../../../../static/image/intro/Open Peeps - Avatar.png';
+import introApi from '../../../../../api/introApi';
 import {
    useMediaQuery,
  } from "@mui/material";
@@ -30,10 +30,37 @@ function PageIntro() {
    if(largeScreen===false){
       checked=true
    }
-   const roles=["Web Developer","FrontEnd","BackEnd","Crawl Data" ]
+   const [des,setDes] = useState("")
+   const [roles,setRoles] = useState([])
+   const [imgAvatar , setImag] = useState("")
+   useEffect(() => {
+      ; (async () => {
+         try {
+            const res = await introApi.getRole()
+            const roles=[]
+            res.data.map((role)=>roles.push(role.name))
+
+            setRoles(roles)
+         } catch (error) {
+            console.log(error.message)
+         }
+      })()
+   }, [])
+   useEffect(() => {
+      ; (async () => {
+         try {
+            const res = await introApi.getProfile()
+            const img = await introApi.getAvatar()
+            const index=res.data[0].image
+            setImag(img.data[index].image)
+            setDes(res.data[0].des)
+         } catch (error) {
+            console.log(error.message)
+         }
+      })()
+   }, [])
    const name="Phan Van Thanh"
-   const des= "I design and develop services for customers of all sizes,specializing in creating stylish, modern websites, web services andonline stores."
-   return (
+    return (
       <div>
          <Grid container  spacing={0}  direction={largeScreen?"row":"column"} 
                sx={{height:"100vh",
@@ -49,7 +76,7 @@ function PageIntro() {
             </Grid>
             <Grid item xs={6} >
                   
-               <Image checked={checked} avatar1={avatar1}/>
+               <Image checked={checked} avatar1={imgAvatar}/>
              
             </Grid>
              

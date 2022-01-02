@@ -26,10 +26,12 @@ function PageProductList() {
             <Title/>
           
             <Grid container direction={largeScreen?"row":"column"}>
-               {datas.map((data)=>
+               {datas.map((data,index)=>
                   <Grid item xs={4} sx={{'@media ( max-width: 480px)':{
                      marginTop:"10px"
-               }}} >
+                     }}} 
+                     key={index}
+                  >
                      <Product  product = {data} checked={checked}/>
                   </Grid>
                )}

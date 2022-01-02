@@ -20,6 +20,15 @@ const useStyles = makeStyles({
       "75%": { 
          transform: "translateY(-150px)"
       },
+      "100%": { 
+         transform: "translateY(-200px)"
+      },
+      "125%": { 
+         transform: "translateY(-250px)"
+      },
+      "150%": { 
+         transform: "translateY(-300px)"
+      },
        
     },
    itemText: {
@@ -56,8 +65,10 @@ function Information(props) {
             <Grid item xs={12}>
                <List sx={{height:"50px",overflow:"hidden"}}  >
                   {props.roles.map((role)=>
-                     <ListItem className={classes.item} >
-                        <ListItemText className={classes.itemText}   primary={<Typography sx={{fontSize:"30px",fontWeight:"bold",}}>{role}</Typography>}/>
+                     <ListItem className={classes.item} key={role} >
+                        <ListItemText className={classes.itemText} key={role}  primary={<Typography sx={{fontSize:"30px",fontWeight:"bold",}}>
+                           {role}
+                        </Typography>}/>
                      </ListItem>
                   )}
                </List>
@@ -68,7 +79,7 @@ function Information(props) {
                </div>
             </Grid>
          </Grid>
-         <Grid container alignItems="center" justifyContent="center" sx={{position:"relative",backgroundColor:"red"}} >
+         {/* <Grid container alignItems="center" justifyContent="center" sx={{position:"relative",backgroundColor:"red"}} >
             <Grid item >
                <svg width="75" height="75" viewBox="0 0 75 75" fill="none" stroke="black" className={classes.iScroll} xmlns="http://www.w3.org/2000/svg">
                <g id="scroll">
@@ -119,7 +130,7 @@ function Information(props) {
                </g>
                </svg>
             </Grid>
-         </Grid>   
+         </Grid>    */}
       </Collapse>        
    );
 }

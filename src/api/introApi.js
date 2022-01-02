@@ -36,18 +36,16 @@ const introApi = {
          return response
       },
       async getAvatar(){
-            const accessToken = localStorage.getItem(StorageKeys.access)
-            const url = `getAvatar/`;
-     
-      
-            const response = await axiosClient.get(url, {
-                
-               headers: {
-                  Authorization: `Bearer ${accessToken}`
-               }
-         }); 
-         
-         return response
+         const url = `getAvatar/`;
+         return axiosClient.get(url);
+      },
+      async getProfile(){
+         const url = `get-profile/`;
+         return axiosClient.get(url);
+      },
+      async getRole(){
+         const url = `get-role/`;
+         return axiosClient.get(url);
       }
      
     

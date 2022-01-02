@@ -7,9 +7,9 @@ function Image(props) {
    
    return (
       <Collapse in={checked} {...(checked ? { timeout: 2000 } : {})}> 
-         <div style={{clipPath:"circle(44.7% at 50% 50%)",
+         <div style={{clipPath:"circle(40% at 50% 50%)",
                   backgroundColor:"#59b256" }}>
-            <img src={props.avatar1}  style={{height:"100%",width:"100%"}}/>
+            <img src={props.avatar1} alt="" style={{height:"60%",width:"60%",marginLeft: "auto",marginRight: "auto",display: "block"}}/>
          </div>
       </Collapse>
    );
