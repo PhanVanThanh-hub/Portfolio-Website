@@ -4,6 +4,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {useDispatch } from 'react-redux';
 import {updateDes} from './IntroSlice';
+import introApi from '../../../../../api/introApi';
+import Swal from 'sweetalert2';
 export default function DesIntro() {
    const [valueDes,setValue] = useState("")
    const handleChange =(e)=>{
@@ -12,10 +14,26 @@ export default function DesIntro() {
       dispatch(actions)
    }
    const dispatch = useDispatch();
-   const handleClick =()=>{
-      console.log("des:",valueDes)
-      const actions = updateDes({value:valueDes})
-      dispatch(actions)
+   const handleClick =async()=>{
+      try {
+         const response = await introApi.updateIntro({des:valueDes});
+         if(response.data.message==="Done"){
+            Swal.fire({
+               icon: 'success',
+               title: 'Done',
+               text: 'Cập nhật mô tả thành công',
+                
+             })
+           }
+      }
+      catch{
+         Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Lỗi cập nhật!',
+             
+          })
+      }
    }
    return (
       <div>

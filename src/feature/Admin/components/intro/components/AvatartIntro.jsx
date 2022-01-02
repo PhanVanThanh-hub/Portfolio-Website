@@ -1,4 +1,4 @@
-import  React,{useState} from 'react';
+import  React,{useState,useEffect} from 'react';
 import Grid from '@mui/material/Grid';
 import avatar1 from '../../../../../static/admin/intro/Open Peeps - Avatar (1).png';
 import avatar2 from '../../../../../static/admin/intro/Open Peeps - Avatar (2).png';
@@ -13,7 +13,9 @@ import { makeStyles } from '@mui/styles';
 import Button from '@mui/material/Button';
 import {useDispatch } from 'react-redux';
 import {changeAvatar} from './IntroSlice';
-const image=[avatar1,avatar2,avatar3,avatar4,avatar5,avatar6]
+import introApi from '../../../../../api/introApi';
+import Swal from 'sweetalert2';
+ 
 const useStyles = makeStyles({
    root: {
       '&:hover':{
@@ -28,16 +30,42 @@ export default function AvatarIntro() {
    const classes= useStyles();
    const [active,setActive]=useState(0)
    const dispatch = useDispatch();
-   
-   const chooseCard =()=>{
-      console.log("hehe:",image[active])
-      const actions = changeAvatar({value:image[active]})
-      dispatch(actions)
+   const [avatar ,setAvatar] = useState([])
+   const chooseCard =async()=>{
+      try {
+         const response = await introApi.updateIntro({image:avatar[active].id});
+         if(response.data.message==="Done"){
+            Swal.fire({
+               icon: 'success',
+               title: 'Done',
+               text: 'Cập nhật Avatar thành công',
+                
+             })
+           }
+      }
+      catch{
+         Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Lỗi cập nhật!',
+             
+          })
+      }
    }
+   useEffect(() => {
+      ; (async () => {
+         try {
+            const res = await introApi.getAvatar()
+            setAvatar(res.data)
+         } catch (error) {
+            console.log(error.message)
+         }
+      })()
+   }, [])
    const activeCard =(index)=>{
-      console.log("index:",index)
+  
       setActive(index)
-      const actions = changeAvatar({value:image[index]})
+      const actions = changeAvatar({value:avatar[index].image})
       dispatch(actions)
    }
    return (
@@ -46,7 +74,7 @@ export default function AvatarIntro() {
          <Grid item xs={12}>
             <Typography sx={{fontSize:"30px",fontWeight:"500px"}}>Choose avatar for Intro</Typography> 
          </Grid>
-         {image.map((img,index)=>
+         {avatar.map((img,index)=>
             <Grid item xs={3}   >
                <Card   value={index} onClick={() =>activeCard(index)} 
                   sx={{ maxWidth: 175,height:233,borderRadius:"24px" ,position: "relative" }}
@@ -55,7 +83,7 @@ export default function AvatarIntro() {
                   <CardMedia
                      component="img"
                      sx={{ position: "absolute",margin: "auto",top: "0",left: "0",right: "0",bottom: "0",}}
-                     src={img}
+                     src={img.image}
                      alt="green iguana"
                   />
                </Card>

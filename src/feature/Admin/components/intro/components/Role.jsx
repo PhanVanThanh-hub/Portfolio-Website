@@ -7,7 +7,10 @@ import InputCard from './InputCard';
 import { Collapse } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import {deleteChip} from './IntroSlice';
+import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import introApi from '../../../../../api/introApi';
+import Swal from 'sweetalert2';
 const useStyle=makeStyles((theme)=>({
    root:{
       marginTop:theme.spacing(1),
@@ -36,6 +39,28 @@ export default function Role() {
       
       
     };
+   const handleClick =async()=>{
+ 
+      try {
+         const response = await introApi.updateRole({chip:chipRedux});
+         if(response.data.message==="Done"){
+            Swal.fire({
+               icon: 'success',
+               title: 'Done',
+               text: 'Cập nhật vai trò thành công',
+                
+             })
+           }
+      }
+      catch{
+         Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Lỗi cập nhật!',
+             
+          })
+      }
+   }
    const classes = useStyle()
    const [open, setOpen]=useState(false)
    return (
@@ -66,6 +91,14 @@ export default function Role() {
                         </Collapse>
                         
                </div>
+            </Grid>
+            <Grid item xs={3}>
+               <Button variant="contained" onClick={handleClick}
+                  sx={{fontWeight:"bold",borderRadius:"12px",marginTop:"16px",background:"linear-gradient(90deg, #0162c8, #55e7fc)",
+                  color:"black"}}
+               >
+                  Confirm
+               </Button>
             </Grid>
          </Grid>
        
