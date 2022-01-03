@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 function About() {
     
    return (
-      <Box id="about"  >
+      <Box id="about"   >
          <PageAbout/>
       </Box>
    );

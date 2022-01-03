@@ -1,7 +1,7 @@
 import React from 'react';
 import CardMedia from '@mui/material/CardMedia';
 import { makeStyles } from '@mui/styles';
-import card from '../../../../../static/image/about/Open Peeps - Standing.png';
+import card from './5063862.webp';
 import Card from '@mui/material/Card';
 
  
@@ -21,22 +21,22 @@ const useStyles = makeStyles({
    }
     
  });
-function Image() {
+function Image(props) {
    const classes = useStyles()
    return (
-      <div>
+      <div style={{ margin:"50px",position:"relative",}}>
          
             <Card  className={classes.cardImage}
-               sx={{position: "absolute",top: "50px",left: "50px",width:"60%",borderRadius:"30px" ,background: "#333",
+               sx={{position: "absolute",top: "50px",left: "50px",width:"60%",borderRadius:"30px" ,bgcolor: 'card.primary',
                '@media ( max-width: 480px)':{
                   display: "none"
               }}}>
             </Card>
-            <Card className={classes.cardImage} sx={{width:"60%",borderRadius:"30px",bgcolor: 'card.primary'  }}>
+            <Card className={classes.cardImage} sx={{width:"60%",borderRadius:"30px"  }}>
                <CardMedia
                   component="img"
-                  
-                  src={card} alt="Paella dish"
+                  sx={{height:"100%"}}
+                  src={props.image} alt="Paella dish"
                />
             </Card> 
          

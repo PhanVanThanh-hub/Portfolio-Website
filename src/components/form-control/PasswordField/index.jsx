@@ -4,18 +4,8 @@ import { Controller } from 'react-hook-form';
 import { FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import clsx from 'clsx';
-import {makeStyles } from '@mui/styles';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    margin: {
-        margin: "10px 0",
-    },
-}));
+ 
+ 
 
 PasswordField.propTypes = {
     form: PropTypes.object.isRequired,
@@ -30,7 +20,7 @@ PasswordField.defaultProps = {
 }
 
 function PasswordField(props) {
-    const classes = useStyles();
+  
     const { form, name, label,disabled } = props;
 
     const { formState: { errors } } = form
