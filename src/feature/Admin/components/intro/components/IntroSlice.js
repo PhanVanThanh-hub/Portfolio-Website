@@ -11,7 +11,6 @@ export const introSlice = createSlice({
    },
    reducers: {
       setAvatar(state,action){
-         console.log("action:",action.payload.value)
          state.value.avatar=action.payload.value
       },
       setChip(state,action){

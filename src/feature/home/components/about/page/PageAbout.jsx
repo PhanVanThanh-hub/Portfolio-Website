@@ -14,10 +14,7 @@ const useStyles = makeStyles({
       position:"relative",
       height:"100%"
    },
-   cardImage:{
-      height:"70vh",
-      position:"relative",
-   }
+  
     
  });
 function PageAbout() {
@@ -33,7 +30,6 @@ function PageAbout() {
       ; (async () => {
          try {
             const res = await aboutApi.getAbout()
-            console.log("res:",res.data)
             setAbout(res.data[0].about)
             setImage(res.data[0].image)
          } catch (error) {

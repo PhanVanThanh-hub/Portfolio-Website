@@ -26,8 +26,8 @@ function Image(props) {
    return (
       <div style={{ margin:"50px",position:"relative",}}>
          
-            <Card  className={classes.cardImage}
-               sx={{position: "absolute",top: "50px",left: "50px",width:"60%",borderRadius:"30px" ,bgcolor: 'card.primary',
+            <Card   
+               sx={{height:"70vh",position: "absolute",top: "50px",left: "50px",width:"60%",borderRadius:"30px" ,bgcolor: 'card.primary',
                '@media ( max-width: 480px)':{
                   display: "none"
               }}}>

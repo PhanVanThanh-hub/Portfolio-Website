@@ -11,6 +11,7 @@ import React, {   useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import DrawerContainer from './layout/DrawerContainer';
 import AdminIntro from './feature/Admin/components/intro/index';
+import AdminAbout from './feature/Admin/components/about/index';
 function App() {
   // const loginInUser = useSelector(state => state.auth.current)
    
@@ -47,8 +48,11 @@ function App() {
             <Route path="/admin"> 
               <Admin/>
             </Route>
-            <Route path="/intro"> 
+            <Route path="/intro">  
               <AdminIntro/>
+            </Route>
+            <Route path="/admin-about">  
+              <AdminAbout/>
             </Route>
           </Switch>
         </ScrollToTop> 
