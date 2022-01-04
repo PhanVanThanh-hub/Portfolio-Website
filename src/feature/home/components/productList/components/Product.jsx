@@ -1,6 +1,4 @@
 import React from 'react';
-
- 
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,12 +9,16 @@ import Grid from '@mui/material/Grid';
  
 function Product(props) {
    const {product,checked} = props
+   const tech=[]
+   product.name_product.map((data)=>(
+      tech.push(data)
+   ))
    return (
       <Collapse in={checked} {...(checked ? { timeout: 2000 } : {})}> 
       <Card sx={{ maxWidth: 345,height:"500px" ,overflow:"hidden",background:"rgba(97, 93, 95, 0.45)"}}>
          <CardHeader
          title={product.name}
-         subheader={product.techUse}
+         subheader={tech}
          />
          <Card sx={{height:"200px" }}>
             <CardMedia
@@ -24,7 +26,7 @@ function Product(props) {
                   transform: "translateY(-100%)" 
                }}}
                component="img"
-               src={product.img}
+               src={product.image}
                alt="Paella dish"
             />
          </Card>
@@ -41,19 +43,24 @@ function Product(props) {
                         Github:
                   </Typography>
                   {
-                     product.link1 ? 
+                     product.frontend ? 
                      <>
                         <Typography variant="body2" color="text.secondary">
-                           FrontEnd:<a href={product.link} target="_blank">{product.link} </a> 
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                           BackEnd:<a href={product.link1} target="_blank">{product.link} </a> 
+                           FrontEnd:<a href={product.frontend} target="_blank">{product.frontend} </a> 
                         </Typography>
                      </>
                      :
-                     <Typography variant="body2" color="text.secondary">
-                        <a href={product.link} target="_blank">{product.link} </a> 
-                     </Typography>
+                     <></>
+                  }
+                  {
+                     product.backend ? 
+                     <>
+                        <Typography variant="body2" color="text.secondary">
+                           FrontEnd:<a href={product.frontend} target="_blank">{product.frontend} </a> 
+                        </Typography>
+                     </>
+                     :
+                     <></>
                   }
                </Grid>
             </Grid>

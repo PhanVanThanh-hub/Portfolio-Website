@@ -3,14 +3,13 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Product from '../components/Product';
-import datas from '../components/data'; 
 import Title from '../components/Title';
 import useWindowPosition from '../../../../../hook/useWindowPosition';
 import {
     
    useMediaQuery,
  } from "@mui/material";
-function PageProductList() {
+function PageProductList(props) {
    const largeScreen = useMediaQuery('(min-width:480px)');
    let checked = useWindowPosition('about');
    if(largeScreen===false){
@@ -26,13 +25,13 @@ function PageProductList() {
             <Title/>
           
             <Grid container direction={largeScreen?"row":"column"}>
-               {datas.map((data,index)=>
+               {props.products.map((product,index)=>
                   <Grid item xs={4} sx={{'@media ( max-width: 480px)':{
                      marginTop:"10px"
                      }}} 
                      key={index}
                   >
-                     <Product  product = {data} checked={checked}/>
+                     <Product  product = {product} checked={checked}/>
                   </Grid>
                )}
                   
