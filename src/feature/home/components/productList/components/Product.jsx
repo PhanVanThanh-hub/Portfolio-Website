@@ -16,10 +16,6 @@ function Product(props) {
    return (
       <Collapse in={checked} {...(checked ? { timeout: 2000 } : {})}> 
       <Card sx={{ maxWidth: 345,height:"500px" ,overflow:"hidden",background:"rgba(97, 93, 95, 0.45)"}}>
-         <CardHeader
-         title={product.name}
-         subheader={tech}
-         />
          <Card sx={{height:"200px" }}>
             <CardMedia
                sx={{width:"100%",transition: "all 10s ease",zIndex:"-1",'&:hover':{
@@ -30,7 +26,10 @@ function Product(props) {
                alt="Paella dish"
             />
          </Card>
-          
+         <CardHeader
+         title={product.name}
+         subheader={tech}
+         />
          <CardContent>
             <Grid container spacing={1}>
                <Grid item xs={12}>

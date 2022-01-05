@@ -1,10 +1,10 @@
 import  React from 'react';
-import ProductList from './components/listProduct/index';
+import PageProductList from './pages/PageListProduct';
 
 export default function AdminProduct() {
    return (
       <div>
-         <ProductList/>
+         <PageProductList/>
       </div>
    );
 }

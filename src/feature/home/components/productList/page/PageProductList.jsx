@@ -9,12 +9,20 @@ import {
     
    useMediaQuery,
  } from "@mui/material";
+ import Slider from "react-slick";
 function PageProductList(props) {
    const largeScreen = useMediaQuery('(min-width:480px)');
    let checked = useWindowPosition('about');
    if(largeScreen===false){
       checked=true
    }
+   const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
    return (
       <Box sx={{padding: "50px 100px",height:"100vh",display: "flex",flexDirection: "column",alignItems: "center",
                '@media ( max-width: 480px)':{
@@ -25,16 +33,17 @@ function PageProductList(props) {
             <Title/>
           
             <Grid container direction={largeScreen?"row":"column"}>
-               {props.products.map((product,index)=>
-                  <Grid item xs={4} sx={{'@media ( max-width: 480px)':{
-                     marginTop:"10px"
-                     }}} 
-                     key={index}
-                  >
-                     <Product  product = {product} checked={checked}/>
-                  </Grid>
-               )}
-                  
+                
+                  {props.products.map((product,index)=>
+                     <Grid item xs={4} sx={{'@media ( max-width: 480px)':{
+                        marginTop:"10px"
+                        }}} 
+                        key={index}
+                     >
+                        <Product  product = {product} checked={checked}/>
+                     </Grid>
+                  )}
+             
                
             </Grid>
         

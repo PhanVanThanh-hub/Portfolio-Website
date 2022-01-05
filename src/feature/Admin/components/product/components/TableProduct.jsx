@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useState} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,6 +7,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
+import UpdateIcon from '@mui/icons-material/Update';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import ModelUpdate from './ModelUpdate';
 import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles({
    table:{
@@ -14,12 +20,30 @@ const useStyles = makeStyles({
          fontWeight:"bold",
          fontSize:"1em"
       }
+   },
+   box:{
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 400,
+      backgroundColor: 'white',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
    }
 });
 export default function TableProduct(props) {
    const classes = useStyles()
-   console.log("value:",props.value)
+   const [open, setOpen] = useState(false);
+   const [data,setData] = useState();
+   const handleClose = () => setOpen(false);
+   const updateData=(data)=>{
+      setData(data)
+      setOpen(true);
+   }
    return (
+      <>
       <TableContainer component={Paper} sx={{width:"100%",borderRadius:"12px"}}>
          <Table sx={{ minWidth: 650 }} aria-label="simple table">
          <TableHead>
@@ -28,12 +52,12 @@ export default function TableProduct(props) {
                <TableCell align="center" >Image</TableCell>
                <TableCell align="left" >Name</TableCell>
                <TableCell align="left" >Tech Use</TableCell>
-               
+               <TableCell align="center" >Update</TableCell>
+               <TableCell align="center" >Delete</TableCell>
             </TableRow>
          </TableHead>
          <TableBody>
             {props.products.map(function(product,index){
-               console.log("???:",product.name,':',typeof(product.name_product))
                if(product.name.includes(props.value)){
                   return(
                      <TableRow
@@ -46,13 +70,27 @@ export default function TableProduct(props) {
                         </TableCell>
                         <TableCell align="left">{product.name}</TableCell>
                         <TableCell align="left">{product.name_product}</TableCell>
+                        <TableCell align="center" onClick={()=>updateData(props.products[index])}><UpdateIcon/></TableCell>
+                        <TableCell align="center"><DeleteIcon/></TableCell>
                      </TableRow>
                   )
                }
                 
             })}
          </TableBody>
+         <Modal
+         open={open}
+         onClose={handleClose}
+         aria-labelledby="modal-modal-title"
+         aria-describedby="modal-modal-description"
+         >
+            <Box className={classes.box}>
+               <ModelUpdate data={data}/>
+            </Box>
+         </Modal>
          </Table>
       </TableContainer>
+       
+      </>
    );
 }
