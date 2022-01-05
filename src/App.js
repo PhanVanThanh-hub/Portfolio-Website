@@ -12,6 +12,7 @@ import { useHistory } from 'react-router-dom';
 import DrawerContainer from './layout/DrawerContainer';
 import AdminIntro from './feature/Admin/components/intro/index';
 import AdminAbout from './feature/Admin/components/about/index';
+import AdminProduct from './feature/Admin/components/product/index';
 function App() {
   // const loginInUser = useSelector(state => state.auth.current)
    
@@ -53,6 +54,9 @@ function App() {
             </Route>
             <Route path="/admin-about">  
               <AdminAbout/>
+            </Route>
+            <Route path="/product">  
+              <AdminProduct/>
             </Route>
           </Switch>
         </ScrollToTop> 
