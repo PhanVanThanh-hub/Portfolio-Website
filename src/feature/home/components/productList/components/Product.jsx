@@ -3,18 +3,17 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import { Collapse } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
  
 function Product(props) {
-   const {product,checked} = props
+   const {product} = props
    const tech=[]
    product.name_product.map((data)=>(
       tech.push(data)
    ))
    return (
-      <Collapse in={checked} {...(checked ? { timeout: 2000 } : {})}> 
+       
       <Card sx={{ maxWidth: 345,height:"500px" ,overflow:"hidden",background:"rgba(97, 93, 95, 0.45)"}}>
          <Card sx={{height:"200px" }}>
             <CardMedia
@@ -65,7 +64,7 @@ function Product(props) {
             </Grid>
          </CardContent>
       </Card>
-      </Collapse>
+
    );
 }
 

@@ -10,7 +10,6 @@ import Avatar from '@mui/material/Avatar';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ModelUpdate from './ModelUpdate';
 import { makeStyles } from '@mui/styles';
@@ -26,22 +25,24 @@ const useStyles = makeStyles({
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: 400,
+      width: 700,
       backgroundColor: 'white',
-      border: '2px solid #000',
-      boxShadow: 24,
-      p: 4,
+      justifyContent: "center",
+      display: "flex",
+      padding:"20px",
+      borderRadius:"12px"
    }
 });
 export default function TableProduct(props) {
    const classes = useStyles()
    const [open, setOpen] = useState(false);
-   const [data,setData] = useState();
+   const [data,setData] = useState({});
    const handleClose = () => setOpen(false);
    const updateData=(data)=>{
       setData(data)
       setOpen(true);
    }
+ 
    return (
       <>
       <TableContainer component={Paper} sx={{width:"100%",borderRadius:"12px"}}>
@@ -83,6 +84,7 @@ export default function TableProduct(props) {
          onClose={handleClose}
          aria-labelledby="modal-modal-title"
          aria-describedby="modal-modal-description"
+         style={{  zIndex: 1 }}
          >
             <Box className={classes.box}>
                <ModelUpdate data={data}/>

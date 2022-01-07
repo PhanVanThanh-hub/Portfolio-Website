@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Product from '../components/Product';
 import Title from '../components/Title';
 import useWindowPosition from '../../../../../hook/useWindowPosition';
+import { Collapse } from '@mui/material';
 import {
     
    useMediaQuery,
@@ -40,7 +41,9 @@ function PageProductList(props) {
                         }}} 
                         key={index}
                      >
-                        <Product  product = {product} checked={checked}/>
+                        <Collapse in={checked} {...(checked ? { timeout: 2000 } : {})}> 
+                           <Product  product = {product} checked={checked}/>
+                        </Collapse>
                      </Grid>
                   )}
              
