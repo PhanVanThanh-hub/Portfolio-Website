@@ -16,16 +16,28 @@ const productApi = {
       return axiosClient.get(url);
    },
    async updateProduct(params) {
-      console.log("parma:",params)
       const newParams = { ...params }
       const accessToken = localStorage.getItem(StorageKeys.access)
       const url = `update-product/`;
-
-      console.log("kdsoL:",newParams)
       const response = await axiosClient.post(url,newParams, {
              
             headers: {
                Authorization: `Bearer ${accessToken}`
+            }
+      }); 
+
+      return response
+   },
+   async deleteProduct(params) {
+      const newParams = { ...params }
+      const accessToken = localStorage.getItem(StorageKeys.access)
+      const url = `delete-product/`;
+
+      console.log("delete:",newParams)
+      const response = await axiosClient.post(url,newParams, {
+             
+            headers: {
+               Authorization: `Bearer ${accessToken}`,
             }
       }); 
 

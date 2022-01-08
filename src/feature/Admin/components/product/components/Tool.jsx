@@ -8,6 +8,8 @@ import { ButtonBase } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Tooltip from '@mui/material/Tooltip';
 import AddIcon from '@mui/icons-material/Add';
+import {ShowAddProduct} from './ProductSlice';
+import {useDispatch } from 'react-redux';
 const useStyles = makeStyles({
  
    form:{
@@ -41,6 +43,7 @@ function ToolProduct(props) {
        
    }
    const classes = useStyles()
+   const dispatch = useDispatch();
    props.handleChangeProduct(value)
    return (
       <Grid container spacing={1}    justifyContent="center" alignItems="center">
@@ -60,7 +63,11 @@ function ToolProduct(props) {
          <Grid item xs={12} sm={6} sx={{textAlign: "right",paddingRight:"16px"}}>
             <Tooltip title="Add product" arrow>
                <ButtonBase className={classes.button}>
-                  <AddIcon/>
+                  <AddIcon 
+                     onClick ={()=>
+                        {
+                           const actions = ShowAddProduct()
+                           dispatch(actions)}} />
                </ButtonBase>
             </Tooltip>
              

@@ -12,7 +12,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import ModelUpdate from './ModelUpdate';
+import ModelAddProduct from './ModelAddProduct';
 import { makeStyles } from '@mui/styles';
+import productApi from '../../../../../api/productApi';
+import Swal from 'sweetalert2';
+import {reloadPage,HideAddProduct} from './ProductSlice';
+import {useDispatch,useSelector } from 'react-redux';
+ 
+ 
 const useStyles = makeStyles({
    table:{
       '& .MuiTableCell-root':{
@@ -38,10 +45,41 @@ export default function TableProduct(props) {
    const [open, setOpen] = useState(false);
    const [data,setData] = useState({});
    const handleClose = () => setOpen(false);
+   const handleCloseAdd = ()=>{
+      const actions = HideAddProduct();
+      dispatch(actions)
+   }
+   const show = useSelector(state => state.product.addProduct)
+   const dispatch = useDispatch();
    const updateData=(data)=>{
       setData(data)
       setOpen(true);
    }
+   const confirmDelete = (data)=>{
+       
+      Swal.fire({
+         title: 'Bạn muốn xóa sản phẩm này?',
+         showDenyButton: true,
+         showCancelButton: true,
+         confirmButtonText: 'Delete',
+         denyButtonText: `Don't delete`,
+      }).then((result) => {
+         if (result.isConfirmed) {
+            deleteProduct(data)
+            Swal.fire('Done Delete', '', 'success')
+         } else if (result.isDenied) {
+           Swal.fire('Changes are not saved', '', 'info')
+         }
+      })
+       
+       
+   }
+   const deleteProduct = async(data)=>{
+      const response = await productApi.deleteProduct(data);
+      const actions = reloadPage();
+      dispatch(actions)
+   }
+      
  
    return (
       <>
@@ -72,7 +110,7 @@ export default function TableProduct(props) {
                         <TableCell align="left">{product.name}</TableCell>
                         <TableCell align="left">{product.name_product}</TableCell>
                         <TableCell align="center" onClick={()=>updateData(props.products[index])}><UpdateIcon/></TableCell>
-                        <TableCell align="center"><DeleteIcon/></TableCell>
+                        <TableCell align="center"  onClick={()=>confirmDelete(props.products[index])}><DeleteIcon/></TableCell>
                      </TableRow>
                   )
                }
@@ -80,14 +118,25 @@ export default function TableProduct(props) {
             })}
          </TableBody>
          <Modal
-         open={open}
-         onClose={handleClose}
-         aria-labelledby="modal-modal-title"
-         aria-describedby="modal-modal-description"
-         style={{  zIndex: 1 }}
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            style={{  zIndex: 1 }}
          >
             <Box className={classes.box}>
                <ModelUpdate data={data}/>
+            </Box>
+         </Modal>
+         <Modal
+            open={show}
+            onClose={handleCloseAdd}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            style={{  zIndex: 1 }}
+         >
+            <Box className={classes.box}>
+               <ModelAddProduct />
             </Box>
          </Modal>
          </Table>
