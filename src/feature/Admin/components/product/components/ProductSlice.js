@@ -6,6 +6,7 @@ export const productSlice = createSlice({
    initialState: {
       value: 1,
       addProduct:false,
+      findProduct:""
    },
    reducers: {
       reloadPage(state){
@@ -17,10 +18,13 @@ export const productSlice = createSlice({
       HideAddProduct(state){
          state.addProduct=false;
       },
+      SetValueFindProduct(state,action){
+         state.findProduct=action.payload
+      },
       
    }
 })
 
 const { actions, reducer } = productSlice
-export const { reloadPage,ShowAddProduct,HideAddProduct} = actions
+export const { reloadPage,ShowAddProduct,HideAddProduct,SetValueFindProduct} = actions
 export default reducer

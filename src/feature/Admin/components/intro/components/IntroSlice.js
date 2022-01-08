@@ -20,7 +20,6 @@ export const introSlice = createSlice({
          )
       },
       setDes(state,action){
-         console.log("action:",action.payload.value)
          state.value.des=action.payload.value
           
       },

@@ -10,8 +10,14 @@ import productApi from '../../../../../api/productApi';
 import Swal from 'sweetalert2';
 import {reloadPage} from './ProductSlice';
 import {useDispatch } from 'react-redux';
+import * as yup from "yup";
+import { yupResolver } from '@hookform/resolvers/yup';
 export default function ModelAddProduct() {
-   
+   const dispatch = useDispatch();
+   const schema = yup.object().shape({
+      name: yup.string().required("Xin vui lòng nhập tên sản phẩm"),
+      des: yup.string().required("Xin vui lòng nhập mô tả sản phẩm")
+   });
    const form = useForm({
          defaultValue: {
             name: "",
@@ -20,21 +26,35 @@ export default function ModelAddProduct() {
             frontend:"",
             backend:""
          },
+         resolver: yupResolver(schema),
         
    });
    const [image,setImage] =useState();
    const onImageChange = event => {
       if (event.target.files && event.target.files[0]) {
          let img = event.target.files[0];
+         console.log("cou:",event.target.files)
          setImage(img)
      
         
       }
     };
-   const handleSubmit = (values) => {
-      console.log("values:",values)
-      console.log("img:",image)
-      
+   const handleSubmit = async(values) => {
+      try {
+         values["image"]=image.name
+       } catch (error) {
+         values["image"]=""
+      }
+      const response = await productApi.createProduct(values);
+      if(response.data.message==="Done"){
+         const actions = reloadPage()
+         dispatch(actions)
+         Swal.fire({
+            icon: 'success',
+            title: 'Done',
+            text: 'Đã thêm sản phẩm mới',   
+            })
+      }
    }
    return (
       <Grid container  spacing={3}>
@@ -57,7 +77,7 @@ export default function ModelAddProduct() {
                      <InputField form={form} name="backend" label="Backend" />
                   </Grid>
                   <Grid item xs={12}>
-                     <input type="file" name="myImage" onChange={onImageChange} />
+                     <input type="file"  accept=".png, .jpg" name="myImage" onChange={onImageChange} />
                   </Grid>
                   <Grid item xs={12} md={6} sx={{width:"50%"}}>
                      <Button type="primary" shape="round"  

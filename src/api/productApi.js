@@ -32,12 +32,26 @@ const productApi = {
       const newParams = { ...params }
       const accessToken = localStorage.getItem(StorageKeys.access)
       const url = `delete-product/`;
-
-      console.log("delete:",newParams)
       const response = await axiosClient.post(url,newParams, {
              
             headers: {
                Authorization: `Bearer ${accessToken}`,
+            }
+      }); 
+
+      return response
+   },
+   async createProduct(params) {
+      const newParams = { ...params }
+      const accessToken = localStorage.getItem(StorageKeys.access)
+      const url = `create-product/`;
+
+      console.log("create:",newParams)
+      const response = await axiosClient.post(url,newParams, {
+             
+            headers: {
+               Authorization: `Bearer ${accessToken}`,
+                
             }
       }); 
 

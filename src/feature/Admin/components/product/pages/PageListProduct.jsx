@@ -6,13 +6,10 @@ import Grid from "@mui/material/Grid";
 import productApi from '../../../../../api/productApi';
 import { useSelector } from 'react-redux';
 function PageProductList() {
-   const [value,setValue]=useState("")
-   const handleChangeProduct =(data)=>(
-      setValue(data)
-   )
+   
    const [products,setProduct] = useState([])
    const reloadPage = useSelector(state => state.product.value)
-   console.log("reloadPage:",reloadPage)
+   const value=useSelector(state => state.product.findProduct)
    useEffect(() => {
       ; (async () => {
          try {
@@ -27,7 +24,7 @@ function PageProductList() {
       <Box sx={{margin:"50px",justifyContent: "center",display: "flex",backgroundColor:"rgba(188, 117, 154, 0.09)",borderRadius:"20px"}}>
          <Grid container justifyContent="center" alignItems="center" sx={{padding:"24px"}}>
             <Grid item xs={12} >
-                  <ToolProduct handleChangeProduct={handleChangeProduct}/>
+                  <ToolProduct />
             </Grid>
             <Grid item xs={12}>
                <TableProduct products={products} value={value}/>

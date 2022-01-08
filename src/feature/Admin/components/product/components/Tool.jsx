@@ -8,7 +8,7 @@ import { ButtonBase } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Tooltip from '@mui/material/Tooltip';
 import AddIcon from '@mui/icons-material/Add';
-import {ShowAddProduct} from './ProductSlice';
+import {ShowAddProduct,SetValueFindProduct} from './ProductSlice';
 import {useDispatch } from 'react-redux';
 const useStyles = makeStyles({
  
@@ -40,11 +40,12 @@ function ToolProduct(props) {
    const [value ,setValue] = useState("")
    const handleChange= (e)=>{
       setValue(e.target.value)
+      const actions = SetValueFindProduct(e.target.value)
+      dispatch(actions)
        
    }
    const classes = useStyles()
    const dispatch = useDispatch();
-   props.handleChangeProduct(value)
    return (
       <Grid container spacing={1}    justifyContent="center" alignItems="center">
          <Grid item xs={12} sm={6}>
