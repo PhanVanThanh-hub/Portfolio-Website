@@ -7,27 +7,19 @@ import ToggleColorMode from './components/UI/theme';
 import AuthFeature from './feature/Auth/index';
 import Admin from './feature/Admin/index';
 import { useSelector } from 'react-redux';
-import React, {   useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import DrawerContainer from './layout/DrawerContainer';
-import AdminIntro from './feature/Admin/components/intro/index';
-import AdminAbout from './feature/Admin/components/about/index';
-import AdminProduct from './feature/Admin/components/product/index';
+import React from 'react';
 function App() {
-  // const loginInUser = useSelector(state => state.auth.current)
+  const loginInUser = useSelector(state => state.auth.current)
    
-  // const history = useHistory();
-  // useEffect(() => {
-  //   if(!!loginInUser.username===true){
-
-  //     history.push('/admin');
-  //   }
-  // },[loginInUser.username]);
   return (
     <div>
       <ToggleColorMode> 
-        {/* <Header/> */}
-        {/* <DrawerContainer/> */}
+         
+        {!!loginInUser.username ?
+          <></>
+          :
+          <Header/>
+        }
         <ScrollToTop>
           <Switch>
             <Route path="/" exact>
@@ -39,24 +31,12 @@ function App() {
             <Route path="/loginPhanVanThanh">
               <AuthFeature/>
             </Route>
-            {/* <Route path="/admin"> 
+            <Route path="/admin"> 
               {!!loginInUser.username ?
                 <Admin/>
                 :
-                <Home/>
+                <></>
               }
-            </Route> */}
-            <Route path="/admin"> 
-              <Admin/>
-            </Route>
-            <Route path="/intro">  
-              <AdminIntro/>
-            </Route>
-            <Route path="/admin-about">  
-              <AdminAbout/>
-            </Route>
-            <Route path="/product">  
-              <AdminProduct/>
             </Route>
           </Switch>
         </ScrollToTop> 

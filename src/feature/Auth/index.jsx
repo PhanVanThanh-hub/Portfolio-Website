@@ -15,9 +15,6 @@ function AuthFeature(props) {
                 <Route path={`${match.url}`} exact>
                     <LoginPage />
                 </Route>
-                <Route path={`${match.url}/login`}>
-                    <LoginPage />
-                </Route>
             </Switch>
         </div>
     );

@@ -19,10 +19,10 @@ export default function PageAdminAbout(props) {
    const changeImage =(data)=>{
       setImage(data)
    }
-  
+    
    return (
       <Box  display="flex" justifyContent="center" sx={{alignItems: "center",height:"100%" }}>
-        
+         
          <Paper elevation={3} sx={{width:"50%",padding:"16px",margin:"30px",height:"50%",borderRadius:"12px"}}> 
             <Edit  changeValue={changeValue} openModel={openModel} changeImage={changeImage}/>
          </Paper>

@@ -3,20 +3,24 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../AuthSlice';
 import Login from '../components/Login';
-
+import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 LoginPage.propTypes = {
 
 };
 
 function LoginPage(props) {
     const dispatch = useDispatch()
-
+    const history = useHistory();
+    const loginInUser = useSelector(state => state.auth.current)
     const onSubmit = async (values) => {
         try {
             const actions = login(values)
             
             await dispatch(actions)
-             
+            if(!!loginInUser.username===true){
+                history.push('/admin');
+            }
              
         } catch (error) {
             console.log(error)
