@@ -14,7 +14,7 @@ function Product(props) {
    ))
    return (
        
-      <Card sx={{ maxWidth: 345,height:"500px" ,overflow:"hidden",background:"rgba(97, 93, 95, 0.45)"}}>
+      <Card sx={{ maxWidth: 345,height:"500px" ,overflow:"hidden",background:"white",margin:"10px"}}>
          <Card sx={{height:"200px" }}>
             <CardMedia
                sx={{width:"100%",transition: "all 10s ease",zIndex:"-1",'&:hover':{

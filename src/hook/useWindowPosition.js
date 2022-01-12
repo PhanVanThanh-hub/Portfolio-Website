@@ -26,7 +26,7 @@ export default function useWindowPosition(id) {
             setAnimation(true);
          }
          else{
-            setAnimation(false);
+            setAnimation(true);
          }
       }
       window.addEventListener('scroll', updatePosition);

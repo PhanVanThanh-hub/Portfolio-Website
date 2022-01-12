@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 function Home() {
    const classes = useStyles();
    const [checked, setChecked] = useState(false);
-  
+ 
    useEffect(() => {
       setChecked(true);
    }, []);
@@ -67,10 +67,12 @@ function Home() {
             </div>
             </Collapse>
          </div>
-         <Box  sx={{ display: "flex", bgcolor: 'background.primary', color: 'text.primary', }}>
+   
+         <Box  sx={{   bgcolor: 'background.primary', color: 'text.primary', }}>
             <HomePage/>
+         
          </Box>
-          
+         
       </div>
    );
 }
