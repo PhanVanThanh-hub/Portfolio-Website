@@ -48,7 +48,7 @@ function InputAreaField(props) {
                   )
                }}
             />
-         <FormHelperText error={!!hasError}>
+         <FormHelperText  error={!!hasError}>
             {errors[name]?.message}
          </FormHelperText>
         </div>

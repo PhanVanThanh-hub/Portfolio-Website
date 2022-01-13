@@ -41,7 +41,7 @@ function PageProductList(props) {
       prevArrow: <SampleArrow />
    };
    return (
-      <Box sx={{padding: "50px 100px",height:"100vh",  
+      <Box sx={{padding: "50px 100px",height:"100%",  
                '@media ( max-width: 480px)':{
                      height:"100%",
                      padding:"10px",

@@ -32,7 +32,7 @@ function InputField(props) {
                             onBlur={onBlur}
                             onChange={onChange}
                             inputRef={ref}
-                            sx={{width:"50%"}}
+                            sx={{width:"100%"}}
                           
                             label={label}
                             error={!!hasError}
