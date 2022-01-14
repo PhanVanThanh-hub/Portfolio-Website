@@ -23,9 +23,11 @@ function App() {
         <ScrollToTop>
           <Switch>
             <Route path="/" exact>
+              <Header/>
                <Home/> 
             </Route>
             <Route path="/cv">
+              <Header/>
               <CV/>
             </Route>
             <Route path="/loginPhanVanThanh">
