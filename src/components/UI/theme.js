@@ -14,13 +14,14 @@ export default function ToggleColorMode(props) {
                 ? {
                     background: {
                         default: "#212946",
-                        primary: "black",
+                        primary: "rgba(39, 25, 21, 0.8)",
+
                     }
                 }
                 : {
                     background: {
                         default: "#e3f2fd",
-                        primary: "#ffffff",
+                        primary: "rgba(186, 241, 211, 0.8)",
                     }
                 }),
             text: {

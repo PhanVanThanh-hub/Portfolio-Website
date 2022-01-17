@@ -4,6 +4,7 @@ import About from '../components/about/index';
 import ProductList from '../components/productList';
 import Contact from '../components/contact';
 import FAQ from '../components/faq/index';
+import BasicSpeedDial from '../../../components/speed-dial/index';
 function HomePage() {
    return (
       <div>
@@ -12,7 +13,7 @@ function HomePage() {
          <FAQ/>
          <ProductList/>
          <Contact/>
-        
+         <BasicSpeedDial/>
       </div>
    );
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import CardMedia from '@mui/material/CardMedia';
 import { makeStyles } from '@mui/styles';
-import card from './5063862.webp';
 import Card from '@mui/material/Card';
 
  
