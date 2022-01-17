@@ -27,7 +27,7 @@ export default function ToggleColorMode(props) {
                 ...(mode === "dark"
                     ? {
                         primary: "#ffffff",
-                        secondary: "deepPurple[800]",
+                        secondary: deepPurple[800],
                         hover: deepPurple[100],
                     }
                     : {
