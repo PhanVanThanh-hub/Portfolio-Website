@@ -1,9 +1,8 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -12,6 +11,7 @@ import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import faqApi from '../../../../../api/faqApi';
 const useStyles = makeStyles(() => ({
    box:{
       width:"100%",
@@ -44,13 +44,36 @@ const useStyles = makeStyles(() => ({
       }
    }
 }))
-function Content(props) {
+function Content() {
    const  classes=useStyles()
    const [expanded, setExpanded] = useState(false);
-
+   const [page, setPage] = useState(1);
    const handleChange = (panel) => (event, isExpanded) => {
       setExpanded(isExpanded ? panel : false);
    };
+   const [pagination , setPagination] =useState({page:1})
+   const [data,setData] = useState([])
+   const [count,setCount]=useState(0)
+   useEffect(() => {
+      ; (async () => {
+         try {
+            const res = await faqApi.getAll(pagination)
+            var amount = res.data.count / 4  
+            setCount(Math.ceil(amount))
+            setData(res.data.results)
+         } catch (error) {
+            console.log(error.message)
+         }
+      })()
+   }, [page])
+   const changePage = (event,pageNumber) => {
+      setPage(pageNumber)
+      const newPagination = {
+         page: pageNumber,
+      }
+      setPagination(newPagination)
+     
+   }
    return (
       <Box className={classes.box} sx={{bgcolor: 'background.default' }}>
          <Grid container sx={{padding:"30px",height:"100%"}} direction="row">
@@ -58,7 +81,7 @@ function Content(props) {
                <Typography className={classes.text} sx={{fontWeight: "600",fontSize: "2rem",}}>FAQ</Typography>
             </Grid>
             <Grid item xs={12} sx={{height:"80%",paddingBottom:"10px",overflow:"hidden"}}>
-               {props.data.map((value,index)=>{
+               {data.map((value,index)=>{
                   return(
                      <Accordion key={index} expanded={expanded === index}  onChange={handleChange(index)}  sx={{backgroundColor:"transparent",boxShadow:"none" }} >
                         <AccordionSummary
@@ -80,13 +103,16 @@ function Content(props) {
              
             <Grid item xs={12} sx={{height:"5%",justifyContent:"flex-end",display: "flex",}}>
                <Pagination
-                  count={3}
+                  count={count}
+                
                   className={classes.pagination}
+                  onChange={changePage}
                   renderItem={(item) => (
                      <PaginationItem  
                         components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
                         {...item}
                      />
+                  
                   )}
                />
             </Grid>
