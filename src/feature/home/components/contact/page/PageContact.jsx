@@ -43,14 +43,14 @@ function PageContact() {
       checked=true
    }
    return (
-      <Box sx={{height: "100vh",position: "relative",display:"flex", justifyContent:"center",padding:"50px",'@media ( max-width: 480px)':{
+      <Box  sx={{ height: "100vh",position: "relative",display:"flex", justifyContent:"center",padding:"50px",'@media ( max-width: 480px)':{
          height:"100%",
          padding: "0px 50px"
       }}}> 
              
           
             {largeScreen?
-               <Paper elevation={3} className={classes.paper} sx={{borderRadius:"20px",padding:"50px 100px",position:"relative"}}> 
+               <Paper elevation={3} className={classes.paper} sx={{bgcolor: 'background.default',borderRadius:"20px",padding:"50px 100px",position:"relative"}}> 
                <div style={{ top: "5%",left: "35%",marginTop:"-50px",marginLeft:"-50px", zIndex:"1",position: "absolute",}}>
                   <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
                      <defs>

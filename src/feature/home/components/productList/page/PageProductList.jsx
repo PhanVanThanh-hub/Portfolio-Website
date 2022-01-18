@@ -51,7 +51,7 @@ function PageProductList(props) {
             </div>
             <Slider {...settings} style={{padding:"20px", background:"linear-gradient(90deg,#755bea, #ff72c0)",borderRadius:"12px"}}>
                {props.products.map((product,index)=>
-                  <Product  product = {product} checked={true}/>
+                  <Product key={index} product = {product} checked={true}/>
                      
                )}
             </Slider>
