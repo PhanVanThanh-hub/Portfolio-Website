@@ -9,7 +9,7 @@ import SelectChip from '../../../../../components/form-control/SelectField/Selec
 import productApi from '../../../../../api/productApi';
 import Swal from 'sweetalert2';
 import Product from '../../../../home/components/productList/components/Product';
-import {reloadPage} from './ProductSlice';
+import {reloadPage} from '../ProductSlice';
 import {useDispatch } from 'react-redux';
 export default function ModelUpdate(props) {
    const {data} =props

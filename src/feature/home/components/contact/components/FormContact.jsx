@@ -60,7 +60,7 @@ function FormContact() {
                   <InputField form={form} name="email" label="Email" />
                </div>
                <div>
-                  <InputAreaField form={form} name="message" label="Message" />
+                  <InputAreaField form={form} style={{height:"90px"}}  name="message" label="Message" />
                </div>
                        
             </CardContent>

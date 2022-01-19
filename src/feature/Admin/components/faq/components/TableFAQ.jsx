@@ -1,25 +1,20 @@
 import React,{useState} from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow} from '@mui/material';
 import Paper from '@mui/material/Paper';
-import Avatar from '@mui/material/Avatar';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import ModelUpdate from './ModelUpdate';
-import ModelAddProduct from './ModelAddProduct';
+import ModelAddFAQ from './ModelAddFAQ';
 import { makeStyles } from '@mui/styles';
-import productApi from '../../../../../api/productApi';
+import faqApi from '../../../../../api/faqApi';
 import Swal from 'sweetalert2';
-import {reloadPage,HideAddProduct} from '../ProductSlice';
+import {reloadPage,HideAddFAQ} from '../FAQSlice';
 import {useDispatch,useSelector } from 'react-redux';
- 
- 
+import Typography from '@mui/material/Typography';
+import {Accordion,AccordionSummary,AccordionDetails} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const useStyles = makeStyles({
    table:{
       '& .MuiTableCell-root':{
@@ -32,31 +27,44 @@ const useStyles = makeStyles({
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: 700,
+      width: 400,
       backgroundColor: 'white',
       justifyContent: "center",
       display: "flex",
       padding:"20px",
       borderRadius:"12px"
+   },
+   box1:{
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 700,
+      backgroundColor: 'white',
+      justifyContent: "center",
+      display: "flex",
+      padding:"20px",
+      borderRadius:"12px",
+      height:"400px"
    }
 });
-export default function TableProduct(props) {
+export default function TableFAQ(props) {
    const classes = useStyles()
    const [open, setOpen] = useState(false);
    const [data,setData] = useState({});
    const handleClose = () => setOpen(false);
    const handleCloseAdd = ()=>{
-      const actions = HideAddProduct();
+      const actions = HideAddFAQ();
       dispatch(actions)
    }
-   const show = useSelector(state => state.product.addProduct)
+   const show = useSelector(state => state.faq.addFAQ)
    const dispatch = useDispatch();
    const updateData=(data)=>{
       setData(data)
       setOpen(true);
    }
    const confirmDelete = (data)=>{
-       
+      
       Swal.fire({
          title: 'Bạn muốn xóa sản phẩm này?',
          showDenyButton: true,
@@ -74,13 +82,11 @@ export default function TableProduct(props) {
        
        
    }
-   const deleteProduct = async(data)=>{
-      const response = await productApi.deleteProduct(data);
+   const deleteProduct =(data)=>{
+      faqApi.remove(data.id);
       const actions = reloadPage();
       dispatch(actions)
    }
-      
- 
    return (
       <>
       <TableContainer component={Paper} sx={{width:"100%",borderRadius:"12px"}}>
@@ -88,29 +94,45 @@ export default function TableProduct(props) {
          <TableHead>
             <TableRow  className={classes.table}>
                <TableCell align="center"  >#</TableCell>
-               <TableCell align="center" >Image</TableCell>
-               <TableCell align="left" >Name</TableCell>
-               <TableCell align="left" >Tech Use</TableCell>
+               <TableCell align="left" >Question</TableCell>
                <TableCell align="center" >Update</TableCell>
                <TableCell align="center" >Delete</TableCell>
             </TableRow>
          </TableHead>
          <TableBody>
-            {props.products.map(function(product,index){
-               if(product.name.includes(props.value)){
+            {props.datas.map(function(product,index){
+               if(product.question.includes(props.value)){
                   return(
                      <TableRow
-                     key={product.name}
+                     key={product.question}
                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                      >
-                        <TableCell align="center">{index}</TableCell>
                         <TableCell align="center">
-                           <Avatar   variant="square" src={product.image} alt="Paella dish" sx={{    display: "block",marginLeft: "auto",marginRight: "auto",width: "50%",}} />
+                           <Typography sx={{fontWeight:"bold",fontSize:"1rem",fontFamily:"cursive"}}>
+                              {index}
+                           </Typography>
                         </TableCell>
-                        <TableCell align="left">{product.name}</TableCell>
-                        <TableCell align="left">{product.name_product}</TableCell>
-                        <TableCell align="center" onClick={()=>updateData(props.products[index])}><UpdateIcon/></TableCell>
-                        <TableCell align="center"  onClick={()=>confirmDelete(props.products[index])}><DeleteIcon/></TableCell>
+                        <TableCell align="left"> 
+                          
+      
+                              <Accordion key={index}   sx={{backgroundColor:"transparent",boxShadow:"none" }} >
+                                 <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                 >
+                                    <Typography sx={{fontWeight:"bold",fontSize:"1rem",fontFamily:"cursive"}}>{product.question}</Typography>
+                                 </AccordionSummary>
+                                 <AccordionDetails>
+                                    <Typography>
+                                       {product.answer}
+                                    </Typography>
+                                 </AccordionDetails>
+                              </Accordion>
+                        
+                        </TableCell>
+                        <TableCell align="center" onClick={()=>updateData(product)}><UpdateIcon/></TableCell>
+                        <TableCell align="center"  onClick={()=>confirmDelete(product)}><DeleteIcon/></TableCell>
                      </TableRow>
                   )
                }
@@ -124,7 +146,7 @@ export default function TableProduct(props) {
             aria-describedby="modal-modal-description"
             style={{  zIndex: 1 }}
          >
-            <Box className={classes.box}>
+            <Box className={classes.box1}  >
                <ModelUpdate data={data}/>
             </Box>
          </Modal>
@@ -136,7 +158,7 @@ export default function TableProduct(props) {
             style={{  zIndex: 1 }}
          >
             <Box className={classes.box}>
-               <ModelAddProduct />
+               <ModelAddFAQ />
             </Box>
          </Modal>
          </Table>

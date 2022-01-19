@@ -14,7 +14,7 @@ InputAreaField.defaultProps = {
 
 function InputAreaField(props) {
 
-   const { form, name, label, disabled } = props;
+   const { form, name, label, disabled,style } = props;
    const { formState: { errors } } = form
    const hasError = errors[name]
 
@@ -39,10 +39,7 @@ function InputAreaField(props) {
                         error={!!hasError}
                         disabled={disabled}
                         inputProps={{
-                           style: {
-                             height:"44px",
-                              
-                           },
+                           style
                        }}
                      />
                   )

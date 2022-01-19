@@ -4,6 +4,7 @@ import AdminIntro from './components/intro/index';
 import AdminAbout from './components/about/index';
 import AdminProduct from './components/product/index';
 import AdminPage from './page/PageAdmin';
+import AdminFAQ from './components/faq/index';
 Admin.propTypes = {
 
 };
@@ -24,6 +25,9 @@ function Admin(props) {
             </Route>
             <Route path={`${match.url}/product`}>
                <AdminProduct/> 
+            </Route>
+            <Route path={`${match.url}/faq`}>
+               <AdminFAQ/> 
             </Route>
          </Switch>
       </div>

@@ -57,6 +57,11 @@ function AdminPage(props) {
                         <Item>Change Product</Item>
                      </Link>
                   </Grid>
+                  <Grid item xs={6}>
+                     <Link to="admin/faq"  className={classes.link} >
+                        <Item>Change FAQ</Item>
+                     </Link>
+                  </Grid>
                </Grid>
             </Grid>
             <Grid item xs={6}>

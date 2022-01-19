@@ -8,7 +8,7 @@ import InputField from '../../../../../components/form-control/InputField/index'
 import SelectChip from '../../../../../components/form-control/SelectField/SelectCustom';
 import productApi from '../../../../../api/productApi';
 import Swal from 'sweetalert2';
-import {reloadPage} from './ProductSlice';
+import {reloadPage} from '../ProductSlice';
 import {useDispatch } from 'react-redux';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';

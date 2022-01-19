@@ -8,7 +8,7 @@ import { ButtonBase } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Tooltip from '@mui/material/Tooltip';
 import AddIcon from '@mui/icons-material/Add';
-import {ShowAddProduct,SetValueFindProduct} from '../ProductSlice';
+import {ShowAddFAQ,SetValueFindQuestion} from '../FAQSlice';
 import {useDispatch } from 'react-redux';
 const useStyles = makeStyles({
  
@@ -36,11 +36,11 @@ const useStyles = makeStyles({
    }
     
  });
-function ToolProduct(props) {
+function ToolFAQ(props) {
    const [value ,setValue] = useState("")
    const handleChange= (e)=>{
       setValue(e.target.value)
-      const actions = SetValueFindProduct(e.target.value)
+      const actions = SetValueFindQuestion(e.target.value)
       dispatch(actions)
        
    }
@@ -62,13 +62,14 @@ function ToolProduct(props) {
             </FormControl>
          </Grid>
          <Grid item xs={12} sm={6} sx={{textAlign: "right",paddingRight:"16px"}}>
-            <Tooltip title="Add product" arrow>
+            <Tooltip title="Add FAQ" arrow>
                <ButtonBase className={classes.button}>
                   <AddIcon 
                      onClick ={()=>
                         {
-                           const actions = ShowAddProduct()
-                           dispatch(actions)}} />
+                           const actions = ShowAddFAQ()
+                           dispatch(actions)}} 
+                     />
                </ButtonBase>
             </Tooltip>
              
@@ -79,4 +80,4 @@ function ToolProduct(props) {
    );
 }
 
-export default ToolProduct;
+export default ToolFAQ;
