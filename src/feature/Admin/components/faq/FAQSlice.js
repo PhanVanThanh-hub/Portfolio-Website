@@ -8,6 +8,7 @@ export const FAQSlice = createSlice({
       findQuestion:"",
       addFAQ:false,
       success:false,
+      page:{page:1}
    },
    reducers: {
       reloadPage(state){
@@ -25,10 +26,14 @@ export const FAQSlice = createSlice({
       SuccessFAQ(state){
          state.success = true;
       },
+      ChangePageFAQ(state,action){
+         console.log("action:",action.payload)
+         state.page = action.payload
+      }
       
    }
 })
 
 const { actions, reducer } = FAQSlice
-export const { reloadPage,ShowAddFAQ,HideAddFAQ,SetValueFindQuestion,SuccessFAQ} = actions
+export const { reloadPage,ShowAddFAQ,HideAddFAQ,SetValueFindQuestion,SuccessFAQ,ChangePageFAQ} = actions
 export default reducer

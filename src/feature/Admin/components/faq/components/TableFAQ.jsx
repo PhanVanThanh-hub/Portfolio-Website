@@ -53,6 +53,7 @@ export default function TableFAQ(props) {
    const [open, setOpen] = useState(false);
    const [data,setData] = useState({});
    const handleClose = () => setOpen(false);
+   const page = useSelector(state =>state.faq.page)
    const handleCloseAdd = ()=>{
       const actions = HideAddFAQ();
       dispatch(actions)
@@ -101,6 +102,8 @@ export default function TableFAQ(props) {
          </TableHead>
          <TableBody>
             {props.datas.map(function(product,index){
+               const numericalOrder = (page.page-1)*8+index+1;
+              
                if(product.question.includes(props.value)){
                   return(
                      <TableRow
@@ -109,13 +112,13 @@ export default function TableFAQ(props) {
                      >
                         <TableCell align="center">
                            <Typography sx={{fontWeight:"bold",fontSize:"1rem",fontFamily:"cursive"}}>
-                              {index}
+                              {numericalOrder}
                            </Typography>
                         </TableCell>
                         <TableCell align="left"> 
                           
       
-                              <Accordion key={index}   sx={{backgroundColor:"transparent",boxShadow:"none" }} >
+                              <Accordion key={numericalOrder}   sx={{backgroundColor:"transparent",boxShadow:"none" }} >
                                  <AccordionSummary
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel1a-content"

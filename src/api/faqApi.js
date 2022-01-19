@@ -17,17 +17,23 @@ const faqApi = {
            
       }
    },
-   async getAllAdmin() {
+   async getAllAdmin(params) {
+      var qs = require('qs');
       const accessToken = localStorage.getItem(StorageKeys.access)
       const url = `get-faqViewSet/`;
       const response = await axiosClient.get(url, {
-             
-            headers: {
-               Authorization: `Bearer ${accessToken}`
-            }
+         params: {
+            ...params,
+         },
+         paramsSerializer:  (params) => {
+            return qs.stringify(params, { arrayFormat: 'repeat' })
+         },
+         headers: {
+            Authorization: `Bearer ${accessToken}`
+         }
       }); 
 
-      return response
+      return {...response}
    },
    addFAQparams(params) {
        
