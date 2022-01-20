@@ -33,7 +33,7 @@ export default function ModelUpdate(props) {
          update(values)
       }
    }
-   const update =async(values)=>{
+   const update =(values)=>{
       data["answer"] = values.answer;
       faqApi.update(data);
        

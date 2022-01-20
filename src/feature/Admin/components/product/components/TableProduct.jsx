@@ -74,8 +74,8 @@ export default function TableProduct(props) {
        
        
    }
-   const deleteProduct = async(data)=>{
-      const response = await productApi.deleteProduct(data);
+   const deleteProduct = (data)=>{
+      const response =  productApi.deleteProduct(data);
       const actions = reloadPage();
       dispatch(actions)
    }

@@ -18,8 +18,9 @@ const productApi = {
    async updateProduct(params) {
       const newParams = { ...params }
       const accessToken = localStorage.getItem(StorageKeys.access)
-      const url = `update-product/`;
-      const response = await axiosClient.post(url,newParams, {
+      console.log("odsa:",params,':',params.id)
+      const url = `get-product/${params.id}/`;
+      const response = await axiosClient.patch(url,newParams, {
              
             headers: {
                Authorization: `Bearer ${accessToken}`
@@ -28,11 +29,12 @@ const productApi = {
 
       return response
    },
-   async deleteProduct(params) {
+   deleteProduct(params) {
       const newParams = { ...params }
       const accessToken = localStorage.getItem(StorageKeys.access)
-      const url = `delete-product/`;
-      const response = await axiosClient.post(url,newParams, {
+      const url = `get-product/${params.id}/`;
+      
+      const response =  axiosClient.delete(url,newParams, {
              
             headers: {
                Authorization: `Bearer ${accessToken}`,

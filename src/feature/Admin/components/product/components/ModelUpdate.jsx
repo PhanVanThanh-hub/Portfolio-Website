@@ -43,6 +43,7 @@ export default function ModelUpdate(props) {
    }
    const update =async(values)=>{
       values["slug"]=data.slug
+      values["id"]=data.id
       const response = await productApi.updateProduct(values);
       if(response.data.message==="Done"){
          const actions = reloadPage()
