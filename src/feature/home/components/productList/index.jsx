@@ -16,7 +16,7 @@ function ProductList() {
       })()
    }, [])
    return (
-      <Box id="product" >
+      <Box id="product" sx={{bgcolor: 'background.default'}}>
          <PageProductList products={products}/>
       </Box>
    );

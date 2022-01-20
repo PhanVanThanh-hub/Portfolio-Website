@@ -59,7 +59,6 @@ function PageIntro() {
          }
       })()
    }, [])
-   const name="Phan Van Thanh"
     return (
       <div>
          <Grid container  spacing={0}  direction={largeScreen?"row":"column"} 
@@ -71,7 +70,7 @@ function PageIntro() {
          >
             <Grid item xs={6}   className={classes.root}>
                   
-               <Information checked={checked} name={name} des={des} roles={roles}/>
+               <Information checked={checked}  des={des} roles={roles}/>
                 
             </Grid>
             <Grid item xs={6} >

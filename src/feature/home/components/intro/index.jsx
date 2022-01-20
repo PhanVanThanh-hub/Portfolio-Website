@@ -3,7 +3,7 @@ import PageIntro from './page/PageIntro';
 import Box from "@mui/material/Box";
 function Intro() {
    return (
-      <Box id="information"  >
+      <Box id="information" sx={{bgcolor: 'background.default'}}  >
          <PageIntro/>
       </Box>
    );

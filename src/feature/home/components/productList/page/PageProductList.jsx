@@ -49,7 +49,7 @@ function PageProductList(props) {
             <div style={{display:"flex",flexDirection: "column",alignItems: "center",}}>
                <Title/>
             </div>
-            <Slider {...settings} style={{padding:"20px", background:"linear-gradient(90deg,#755bea, #ff72c0)",borderRadius:"12px"}}>
+            <Slider {...settings} style={{padding:"20px",borderRadius:"12px"}}>
                {props.products.map((product,index)=>
                   <Product key={index} product = {product} checked={true}/>
                      

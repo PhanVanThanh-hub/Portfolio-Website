@@ -1,8 +1,7 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import Grid from '@mui/material/Grid';
 import { makeStyles } from '@mui/styles';
 import Typography from '@mui/material/Typography';
-import Content from '../components/Content';
 import ListContent from '../components/List';
 const useStyles = makeStyles({
    root:{

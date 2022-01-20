@@ -20,7 +20,6 @@ function Title() {
    
    return (
       <Box className={classes.box}>
-         das
       </Box>
    );
 }

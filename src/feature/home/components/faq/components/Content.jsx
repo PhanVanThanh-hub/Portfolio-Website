@@ -73,7 +73,7 @@ function Content() {
      
    }
    return (
-      <Box className={classes.box} sx={{bgcolor: 'background.default' }}>
+      <Box className={classes.box} >
          <Grid container sx={{padding:"30px",height:"100%"}} direction="row">
             <Grid item xs={4} sx={{marginBottom:"20px",height:"15%"}}>
                <Typography className={classes.text} sx={{fontWeight: "600",fontSize: "2rem",}}>FAQ</Typography>
