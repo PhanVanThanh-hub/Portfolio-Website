@@ -27,7 +27,7 @@ function App() {
                <Home/> 
             </Route>
             <Route path="/cv">
-              <Header/>
+               
               <CV/>
             </Route>
             <Route path="/loginPhanVanThanh">
