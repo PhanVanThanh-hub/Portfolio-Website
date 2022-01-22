@@ -9,7 +9,7 @@ export default function AboutMe() {
    return (
       <Grid container spacing={2} sx={{color:"white"}}>
          <Grid item xs={12} sx={{display:"flex",}}>
-            <Avatar sx={{justifyContent:"center", bgcolor: deepOrange[500] ,width: "300px",height: "300px", border: '5px solid lightgray'}}>N</Avatar>
+            <Avatar sx={{justifyContent:"center", bgcolor: deepOrange[500] ,width: "200px",height: "200px", border: '5px solid lightgray'}}>N</Avatar>
          </Grid>
          <Grid item xs={12}>
             <Typography sx={{fontWeight:"bold",letterSpacing:"0.08em",fontSize:"1.5em"}}>ABOUT ME</Typography>
@@ -24,10 +24,6 @@ export default function AboutMe() {
                delor sit amet.consectetur adipisicing elin.
             </Typography>
          </Grid>
-         <Grid item xs={12}>
-            
-         </Grid>
-         
       </Grid>
    );
 }

@@ -7,7 +7,7 @@ import Experience from '../components/Experience';
 import Education from '../components/Education';
 import Hobby from '../components/Hobby';
 import AboutMe from '../components/AboutMe';
- 
+import IconTask from '../components/IconTask';
 const useStyles = makeStyles({
  
    root:{
@@ -23,7 +23,7 @@ function PageWork() {
  
    return (
       <Grid container  spacing={1}sx={{height:"100%",backgroundColor:"#1b1613",padding:"30px"}}>
-         <Grid item xs={5}>
+         <Grid item xs={4}>
             <Grid container spacing={2}>
                <Grid item xs={12}>
                   <Title/>
@@ -31,9 +31,12 @@ function PageWork() {
                <Grid item xs={12} >
                   <AboutMe/>
                </Grid>
+               <Grid item xs={12} sx={{marginTop:"30px"}}>
+                  <IconTask/>
+               </Grid>
             </Grid>
          </Grid>
-         <Grid item xs={7}  >
+         <Grid item xs={8}  >
             <Grid container sx={{paddingTop:"22px"}}>
                <Grid item xs={12}>
                   <Contact/>
