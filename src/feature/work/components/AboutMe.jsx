@@ -1,15 +1,28 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
  
 import Divider from '@mui/material/Divider';
 import Avatar from '@mui/material/Avatar';
-import { deepOrange } from '@mui/material/colors';
+import cvApi from '../../../api/cvApi';
 export default function AboutMe() {
+   const [image,setImage] = useState();
+   useEffect(() => {
+      ; (async () => {
+         try {
+            const res = await cvApi.getCV()
+            console.log("rs:",res.data[0])
+            const data = res.data[0]
+            setImage(data["image"])
+         } catch (error) {
+            console.log("error:",error.message)
+         }
+      })()
+   }, []) 
    return (
       <Grid container spacing={2} sx={{color:"white"}}>
          <Grid item xs={12} sx={{display:"flex",}}>
-            <Avatar sx={{justifyContent:"center", bgcolor: deepOrange[500] ,width: "200px",height: "200px", border: '5px solid lightgray'}}>N</Avatar>
+            <Avatar sx={{justifyContent:"center",width: "200px",height: "200px", border: '5px solid lightgray'}} src={image}></Avatar>
          </Grid>
          <Grid item xs={12}>
             <Typography sx={{fontWeight:"bold",letterSpacing:"0.08em",fontSize:"1.5em"}}>ABOUT ME</Typography>
