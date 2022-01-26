@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import { makeStyles } from '@mui/styles';
 import Contact from '../components/Contact';
 import Title from '../components/Title';
 import Experience from '../components/Experience';
@@ -8,19 +7,9 @@ import Education from '../components/Education';
 import Hobby from '../components/Hobby';
 import AboutMe from '../components/AboutMe';
 import IconTask from '../components/IconTask';
-const useStyles = makeStyles({
- 
-   root:{
-      padding:"50px",
-      position:"relative",
-      height:"100%"
-   },
-  
-    
- });
+
 function PageWork() {
-   const classes = useStyles()
- 
+
    return (
       <Grid container  spacing={1}sx={{height:"100%",backgroundColor:"#1b1613",padding:"30px"}}>
          <Grid item xs={4}>

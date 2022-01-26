@@ -19,9 +19,7 @@ export default function Contact() {
       ; (async () => {
          try {
             const res = await cvApi.getCV()
-            console.log("rs:",res.data[0])
             const data = res.data[0]
-            console.log("???:",data["phoneNumber"])
             setPhoneNumber(data["phoneNumber"])
             setEmail(data["email"])
             setAddress(data["address"])

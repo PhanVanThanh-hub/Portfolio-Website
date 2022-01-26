@@ -1,8 +1,21 @@
-import React from 'react';
+import React ,{useState,useEffect} from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import cvApi from '../../../api/cvApi';
 export default function Education() {
+   const [data, setData] = useState([])
+   useEffect(() => {
+      ; (async () => {
+         try {
+            const res = await cvApi.getEducation()
+            const data = res.data[0]
+            setData(res.data)
+         } catch (error) {
+            console.log("error:",error.message)
+         }
+      })()
+   }, [])
    return (
       <Grid container spacing={2} sx={{color:"white"}}>
          <Grid item xs={12}>
@@ -11,17 +24,18 @@ export default function Education() {
          <Grid item xs={12}>
             <Divider sx={{borderColor:"#26211e"}}/>
          </Grid>
-         <Grid item xs={12}>
-            <Typography sx={{fontWeight:"bold"}}>Duy Tan University</Typography>
-            <Typography sx={{padding:"10px 0px",   fontFamily: "emoji"}}>
-               Jan 2019- Present
-            </Typography>
-            <Typography sx={{fontSize:"0.9em"}}>
-               Lorem ipsum dolor sit amet. consectetur adipisicing elit Non
-               vel sint nii possimun unt vertatis etam velt Lorem ipum
-               delor sit amet.consectetur adipisicing elin.
-            </Typography>
-         </Grid>
+         {data.map((data)=>
+            <Grid item xs={12}>
+               <Typography sx={{fontWeight:"bold"}}>{data["Title"]}</Typography>
+               <Typography sx={{padding:"10px 0px",   fontFamily: "emoji"}}>
+                  {data["Year"]}
+               </Typography>
+               <Typography sx={{fontSize:"0.9em"}}>
+                  {data["Detail"]}
+               </Typography>
+            </Grid>
+         )}
+          
          
       </Grid>
    );
