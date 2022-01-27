@@ -1,20 +1,20 @@
 import React ,{useState,useEffect} from 'react';
 import Box from "@mui/material/Box";
 import ToolProduct from '../components/Tool';
-import TableProduct from '../components/TableProduct';
+import TableEducation from '../components/TableEducation';
 import Grid from "@mui/material/Grid";
-import productApi from '../../../../../api/productApi';
+import cvApi from '../../../../../api/cvApi';
 import { useSelector } from 'react-redux';
-function PageProductList() {
+function PageEducation() {
    
-   const [products,setProduct] = useState([])
+   const [education,setEducation] = useState([])
    const reloadPage = useSelector(state => state.admin.value)
-   const value=useSelector(state => state.product.findProduct)
+    
    useEffect(() => {
       ; (async () => {
          try {
-            const res = await productApi.getAll()
-            setProduct(res.data)
+            const res = await cvApi.getEducation()
+            setEducation(res.data)
          } catch (error) {
             console.log(error.message)
          }
@@ -27,11 +27,11 @@ function PageProductList() {
                   <ToolProduct />
             </Grid>
             <Grid item xs={12}>
-               <TableProduct products={products} value={value}/>
+               <TableEducation education={education} />
             </Grid>
          </Grid>
       </Box>
    );
 }
 
-export default PageProductList;
+export default PageEducation;

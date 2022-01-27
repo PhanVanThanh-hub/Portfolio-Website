@@ -65,7 +65,28 @@ function AdminPage(props) {
                </Grid>
             </Grid>
             <Grid item xs={6}>
-               
+               <Grid container  sx={{'& .MuiGrid-item':{margin:"40px",width:"40%"}}}   
+                     direction="column" justifyContent="space-between" alignItems="flex-start">
+                  <Grid item xs={6}>
+                     <Link to="admin/contact" className={classes.link}   >
+                        <Item>Change Contact</Item>
+                     </Link>
+                     
+                  </Grid>
+                  <Grid item xs={6}>
+                     <Link to="admin/education" className={classes.link}   >
+                        <Item>Change Education</Item>
+                     </Link>
+                     
+                  </Grid>
+                  <Grid item xs={6}>
+                     <Link to="admin/experience" className={classes.link}   >
+                        <Item>Change Experience</Item>
+                     </Link>
+                     
+                  </Grid>
+                  
+               </Grid>
             </Grid>
          </Grid>
       </div>

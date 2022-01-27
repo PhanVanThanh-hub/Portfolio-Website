@@ -4,24 +4,30 @@ import Button from '@mui/material/Button';
 import { useForm } from 'react-hook-form';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import InputAreaField from '../../../../../components/form-control/InputAreaField';
-import faqApi from '../../../../../api/faqApi';
+import InputField from '../../../../../components/form-control/InputField/index';
+import cvApi from '../../../../../api/cvApi';
 import Swal from 'sweetalert2';
 import {reloadPage} from '../../../AdminSlice';
 import {useDispatch } from 'react-redux';
-export default function ModelUpdate(props) {
+export default function FormUpdate(props) {
    const {data} =props
  
-
+   console.log("data:",data)
    const form = useForm({
          defaultValue: {
-            answer: "",
+            phoneNumber:"",
+            email:"",
+            address:"",
+            github:"",
+            website:"",
+             
          },
         
    });
    const dispatch = useDispatch();
    const handleSubmit = (values) => {
-      if(!!values.answer===false)
+      if(!!values.phoneNumber===false && !!values.email===false && !!values.address===false && !!values.github===false
+         && !!values.website===false )
       {
          Swal.fire({
             icon: 'error',
@@ -34,9 +40,8 @@ export default function ModelUpdate(props) {
       }
    }
    const update =(values)=>{
-      data["answer"] = values.answer;
-      faqApi.update(data);
-       
+      values["id"]= data["id"]
+      cvApi.updateContact(values);
       const actions = reloadPage()
       dispatch(actions)
       Swal.fire({
@@ -46,33 +51,37 @@ export default function ModelUpdate(props) {
       })   
    }
    return (
-      <Grid container  spacing={3}>
-         <Grid item xs={6}>
-            <Typography sx={{fontWeight:"bold",fontSize:"1.5rem",fontFamily:"cursive"}}>
-               {data.question}
-            </Typography>
-            <Typography sx={{marginTop:"20px"}}>
-               {data.answer}
-            </Typography>
-         </Grid>
+     
          <Grid item xs={6}>
             <form initialvalues={{ remember: true }}  onSubmit={form.handleSubmit(handleSubmit)}>
-               <Grid container spacing={3} direction="column" justifyContent="center" alignItems="center">
+               <Grid container >
                   <Grid item xs={12} sx={{width:"100%"}}>
-                     <InputAreaField form={form} style={{height:"250px"}}  name="answer" label="Answer" />
+                     <InputField form={form}  name="phoneNumber" label="PhoneNumber" />
+                  </Grid>
+                  <Grid item xs={12} sx={{width:"100%"}}>
+                     <InputField form={form}  name="email" label="Email" />
+                  </Grid>
+                  <Grid item xs={12} sx={{width:"100%"}}>
+                     <InputField form={form}  name="address" label="Address" />
+                  </Grid>
+                  <Grid item xs={12} sx={{width:"100%"}}>
+                     <InputField form={form}  name="github" label="Github" />
+                  </Grid>
+                  <Grid item xs={12} sx={{width:"100%"}}>
+                     <InputField form={form}  name="website" label="Website" />
                   </Grid>
                   <Grid item xs={12}  sx={{width:"70%"}}>
                      <Button type="primary" shape="round"  
                         sx={{ width: "100%",borderRadius:"35px",textTransform: "none",
                         background: "linear-gradient(90deg, #0162c8, #55e7fc)"}}
                      >
-                        <Typography sx={{color:"white",fontWeight:"bold",}}>Upload Product</Typography> 
+                        <Typography sx={{color:"white",fontWeight:"bold",}}>Update Contact</Typography> 
                      </Button>
                   </Grid>
                </Grid>
                 
             </form>
          </Grid>
-      </Grid>
+      
    );
 }

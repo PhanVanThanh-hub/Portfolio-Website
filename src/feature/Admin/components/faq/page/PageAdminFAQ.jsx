@@ -9,7 +9,7 @@ import PaginationFAQAdmin from '../components/Pagination';
 function PageFAQ() {
    
    const [data,setData] = useState([])
-   const reloadPage = useSelector(state => state.faq.value)
+   const reloadPage = useSelector(state => state.admin.value)
    const value=useSelector(state => state.faq.findQuestion)
    const page = useSelector(state =>state.faq.page)
    const [count,setCount]=useState(0)
