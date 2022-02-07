@@ -18,7 +18,9 @@ const useStyles = makeStyles({
    },
    root:{
       padding:"50px",
- 
+      '@media ( max-width: 600px)':{
+         padding:"0px 10px"
+      },
    },
     
  });
@@ -63,21 +65,41 @@ function PageIntro() {
       <div>
          <Grid container  spacing={0}  direction={largeScreen?"row":"column"} 
                sx={{height:"100vh",
-                  '@media ( max-width: 480px)':{
-                      height:"100%"
-                  }}} 
+                  
+                 '@media ( max-width: 1024px)':{
+                  height:"100%"
+                   },
+
+               
+               
+               }} 
          alignItems="center" justifyContent="center" 
-         >
-            <Grid item xs={6}   className={classes.root}>
+         >  
+         {
+            !largeScreen?
+               <> 
+                  <Grid item xs={6} > 
+                     <Image checked={checked} avatar1={imgAvatar}/>
+                  </Grid>
+                  <Grid item xs={6}   className={classes.root}>
+                     <Information checked={checked}  des={des} roles={roles}/>
+                  </Grid>
+               </>
+            :
+            <>
+               <Grid item xs={6}   className={classes.root}>
+                     
+                  <Information checked={checked}  des={des} roles={roles}/>
                   
-               <Information checked={checked}  des={des} roles={roles}/>
-                
-            </Grid>
-            <Grid item xs={6} >
-                  
-               <Image checked={checked} avatar1={imgAvatar}/>
+               </Grid>
+               <Grid item xs={6} >
+                     
+                  <Image checked={checked} avatar1={imgAvatar}/>
+               
+               </Grid>
+            </>
+         }
              
-            </Grid>
              
          </Grid>
       </div>

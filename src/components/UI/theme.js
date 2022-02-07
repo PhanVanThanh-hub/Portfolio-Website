@@ -13,15 +13,15 @@ export default function ToggleColorMode(props) {
          ...(mode === "dark"
                 ? {
                     background: {
-                        default: "#212946",
-                        primary: "rgba(39, 25, 21, 0.8)",
+                        default: "black",
+                        secondary: "red",
 
                     }
                 }
                 : {
                     background: {
-                        default: "#e3f2fd",
-                        primary: "rgba(186, 241, 211, 0.8)",
+                        default: "white",
+                        secondary: "red",
                     }
                 }),
             text: {

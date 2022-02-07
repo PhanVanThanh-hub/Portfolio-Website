@@ -7,6 +7,7 @@ import { makeStyles } from '@mui/styles';
 import { Collapse } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 const useStyles = makeStyles({
    item:{
       height:"100%",
@@ -54,24 +55,41 @@ const useStyles = makeStyles({
       '&:hover':{
          color:"#0A66C2"
       }
+   },
+   grid:{
+      '& .MuiGrid-item':{
+         '@media (max-width:480px)': {
+            justifyContent: "center",
+            display: "flex",
+            alignItems: "center",
+            textAlign: "center",
+         },
+          
+      } 
    }
  });
  
+const theme = createTheme();
 
+theme.typography.h1 = {
+   fontSize:"3.525rem" ,letterSpacing: "1.5px" ,
+   '@media (max-width:600px)': {
+     fontSize: '30px',
+   },
+    
+ };
 function Information(props) {
    const classes = useStyles()
    const {checked} = props
    return (
+      <ThemeProvider theme={theme}> 
       <Collapse in={checked}  {...(checked ? { timeout: 2000 } : {})}> 
-         <Grid container spacing={3}>
+         <Grid container className={classes.grid}  >
             <Grid item xs={12}>
-               <Typography variant="h1" sx={{fontSize:"60px" ,fontFamily: "fantasy",letterSpacing: "1.5px"}}>HELLO!MY NAME IS</Typography>
+               <Typography variant="h1" sx={{color: "rgb(55, 102, 244)"}} >Phan Van Thanh</Typography>
             </Grid>
             <Grid item xs={12}>
-               <Typography variant="h1" sx={{fontSize:"60px",fontFamily: "fantasy",letterSpacing: "1.5px" }}>PHAN VAN Thanh</Typography>
-            </Grid>
-            <Grid item xs={12}>
-               <Typography variant="h1" sx={{fontSize:"60px",fontFamily:"cursive",letterSpacing: "1.5px" }}>Software Developer</Typography>
+               <Typography variant="h1"   >Software Developer</Typography>
             </Grid>
             <Grid item xs={12}>
                <List sx={{height:"50px",overflow:"hidden"}}  >
@@ -85,16 +103,20 @@ function Information(props) {
                </List>
             </Grid>
             <Grid item xs={12}>
-               <Grid container spacing={1}>
+               <Grid container spacing={1} 
+                     sx={{'@media (max-width:480px)':{
+                           display: "flex",justifyContent:"center"
+                     }}}
+               >
                   <Grid item sx={3}>
                      <a href="https://github.com/PhanVanThanh-hub" target="_blank">
-                        <GitHubIcon className={classes.icon} sx={{height:"4em",width:"4em"}}/>
+                        <GitHubIcon className={classes.icon} sx={{height:"2em",width:"2em"}}/>
                      </a>
                       
                   </Grid>
                   <Grid item sx={3}>
                      <a href="https://www.linkedin.com/in/thanh-phan-13b796220/" target="_blank">
-                        <LinkedInIcon className={classes.icon} sx={{height:"4em",width:"4em"}}/>
+                        <LinkedInIcon className={classes.icon} sx={{height:"2em",width:"2em"}}/>
                      </a>
                   </Grid>
                </Grid>
@@ -104,7 +126,8 @@ function Information(props) {
              
          </Grid>
           
-      </Collapse>        
+      </Collapse>   
+      </ThemeProvider>     
    );
 }
 

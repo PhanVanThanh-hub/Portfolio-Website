@@ -5,6 +5,8 @@ import Content from './Content';
 import  react from '../../../../../static/image/ido/logo192.png';
 import  django from '../../../../../static/image/ido/django.png';
 import  python from '../../../../../static/image/ido/python.png';
+import Content900px from './Content900px';
+import { useMediaQuery,} from "@mui/material";
 const useStyles = makeStyles({
 
     
@@ -16,16 +18,37 @@ const data=[
 ]
 function ListContent() {
    const classes = useStyles()
+   const largeScreen = useMediaQuery('(min-width:480px)');
+   const largeScreen1 = useMediaQuery('(min-width:900px)');
    return (
       <div>
-         <Grid container sx={{ position: "relative",overflow:"hidden"}}  spacing={0} alignItems="center" justifyContent="center">
+         <Grid container direction={largeScreen?"row":"column"}  sx={{ position: "relative",overflow:"hidden"}} 
+             spacing={1} alignItems="center" justifyContent="center"
+         >  
             {
-               data.map(detail=>
-                  <Grid item xs={4} >
-                     <Content data={detail}/>
-                  </Grid>
-               )
+               !largeScreen1?
+                  <>
+                  {
+                        data.map(detail=> 
+                           <Grid item xs={4}  >
+                              <Content900px data={detail}/>
+                           </Grid>
+                        )
+                     }
+                 
+                  </>
+               :
+                  <>
+                     {
+                        data.map(detail=> 
+                           <Grid item xs={4}  >
+                              <Content data={detail}/>
+                           </Grid>
+                        )
+                     }
+                  </>
             }
+             
          
          </Grid>
       </div>

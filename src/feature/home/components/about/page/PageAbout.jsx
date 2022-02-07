@@ -40,13 +40,17 @@ function PageAbout() {
    return (
   
          <Grid container  spacing={1} direction={largeScreen?"row":"column"} alignItems="center" justifyContent="center"
-            sx={{height:"100vh",'@media ( max-width: 480px)':{
-                  height:"100%",marginTop: "50px"
-              }}}
+            sx={{height:"100vh",'@media ( max-width: 480px)  ':{
+                  height:"100%",marginTop: "50px",textAlign: "center"
+              },
+              '@media ( max-width: 1024px)':{
+                  height:"100%"
+               },
+            }}
          >
             <Grid item xs={6}   className={classes.root}>
                <Collapse in={checked} {...(checked ? { timeout: 2000 } : {})}> 
-                  <Image image={image}/>
+                  <Image  image={image}/>
                </Collapse>
             </Grid>
             <Grid item xs={6} sx={{ padding:"50px"}}>

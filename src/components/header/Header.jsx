@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import Model from '../../layout/components/layout-model/layoutModel';
 import DrawerUI from './Drawer';
 import image from '../../static/image/header/Pusheen_Zoom_Background_Campfire_2020.jpg';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import Slide from '@mui/material/Slide';
 import {
-    
    useMediaQuery,
  } from "@mui/material";
 const useStyles = makeStyles((theme) => ({
@@ -86,8 +87,15 @@ export default function Header() {
       window.addEventListener('scroll', updatePosition);
       updatePosition();
    }, );
+   const trigger = useScrollTrigger();
+   
+   if(trigger===false && sticky===true){
+      console.log("???h9hi")
+      
+   }
    return (
-      <AppBar elevation={1}sx={{transition: "1s",background:"#fff",height: sticky ? "100vh":"10vh"}}>
+      
+      <AppBar elevation={!trigger? 1 : 0} sx={{transition: "1s",background:!trigger? "#fff":"transparent",height: sticky ? "100vh":"10vh"}}>
          {
             sticky?
                <div className={classes.root} id="header" >
@@ -100,7 +108,7 @@ export default function Header() {
                   </div>
                </div>
             :
-            <>
+            <Slide appear={false} direction="down" in={!trigger}>
                <Toolbar className={classes.appbarWrapper}>
                   <h1 className={classes.appbarTitle}>
                      My<span className={classes.colorText}>Profile.</span> 
@@ -125,9 +133,10 @@ export default function Header() {
                   }
                   
                </Toolbar>
-            </>
+            </Slide>
          }
           
       </AppBar>
+       
    );
 }

@@ -10,6 +10,8 @@ import PaginationItem from '@mui/material/PaginationItem';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import faqApi from '../../../../../api/faqApi';
+import { useMediaQuery,} from "@mui/material";
+import Title from './Title';
 const useStyles = makeStyles(() => ({
    box:{
       width:"100%",
@@ -72,13 +74,32 @@ function Content() {
       setPagination(newPagination)
      
    }
+   const largeScreen = useMediaQuery('(min-width:900px)');
    return (
       <Box className={classes.box} >
          <Grid container sx={{padding:"30px",height:"100%"}} direction="row">
-            <Grid item xs={4} sx={{marginBottom:"20px",height:"15%"}}>
-               <Typography className={classes.text} sx={{fontWeight: "600",fontSize: "2rem",}}>FAQ</Typography>
-            </Grid>
-            <Grid item xs={12} sx={{height:"80%",paddingBottom:"10px",overflow:"hidden"}}>
+             
+               {
+                  largeScreen?
+                     <Grid item xs={4} sx={{marginBottom:"20px",height:"15%",
+                           '@media ( min-width: 900px)':{
+                              height:"0%",
+                              
+                           },
+                        }}>
+                        <Typography className={classes.text} sx={{fontWeight: "600",fontSize: "2rem",}}>FAQ</Typography>
+                     </Grid>
+                  :
+                  <Grid item xs={12} sx={{height:"0%"}}>
+                        <Title/>
+                  </Grid>
+               }
+            <Grid item xs={12} 
+               sx={{height:"80%",paddingBottom:"10px",overflow:"hidden",
+                  '@media ( min-width: 900px)':{
+                     height:"auto"
+                  },
+               }}>
                {data.map((value,index)=>{
                   return(
                      <Accordion key={index} expanded={expanded === index}  onChange={handleChange(index)}  sx={{backgroundColor:"transparent",boxShadow:"none" }} >
@@ -99,7 +120,9 @@ function Content() {
                })}
             </Grid>
              
-            <Grid item xs={12} sx={{height:"5%",justifyContent:"flex-end",display: "flex",}}>
+            <Grid item xs={12} sx={{height:"5%",justifyContent:"flex-end",display: "flex",'@media ( max-width: 900px)':{
+                  height:"0%"
+               },}}>
                <Pagination
                   count={count}
                 

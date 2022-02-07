@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { makeStyles } from '@mui/styles';
-import  pepsi from '../../../../../static/image/ido/logo192.png';
+ 
 const useStyles = makeStyles(() => ({
    card:{
       position: "relative",
       width: "auto",
       height: "350px",
-   
+       
       borderRadius: "20px",
       display: "flex",
       alignItems: "center",
@@ -21,8 +21,26 @@ const useStyles = makeStyles(() => ({
             transition: "0.5s",
          
       },
+      '@media ( max-width: 480px)':{
+         height:"100%",
+         alignItems:"unset",
+         border: "1px solid #c4babe",
+         '& img':{
+            left: "82%",
+            width:"100px"
+         },
+         '& $circle::before':{
+            backgroundImage: "linear-gradient( 109.6deg,  rgba(61,245,167,1) 11.2%, rgba(9,111,224,1) 91.1% )",
+            clipPath:"circle(400px at center)",
+         },
+         '& $content':{
+            left: "0",
+            opacity: "1",
+            visibility: "visible",
+         }
+      },
       '&:hover':{
- 
+         border: "1px solid #c4babe",
          '& img':{
             left: "82%",
             width:"100px"
@@ -67,6 +85,9 @@ const useStyles = makeStyles(() => ({
       transition: "0.5s",
       opacity: "0",
       visibility: "hidden",
+      '@media ( max-width: 480px)':{
+         padding: "0px 10px",
+      },
       '& h2':{
          color: "black",
          textTransform: "uppercase",

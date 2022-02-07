@@ -22,7 +22,11 @@ const useStyles = makeStyles({
 function InformationContact() {
    const classes = useStyles()
    return (
-      <Grid container spacing={3}  direction="column"    >
+      <Grid container spacing={3}  direction="column"  
+         sx={{'@media ( max-width: 900px)':{
+            display:"flex",textAlign: "center"
+         }}}
+      >
          <Grid item xs={12} >
             <Typography sx={{fontSize: "60px",'@media ( max-width: 480px)':{
                            fontSize: "30px"

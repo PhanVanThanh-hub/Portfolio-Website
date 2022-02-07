@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 function Home() {
    return (
       <div style={{marginTop:"30px"}}  >
-         <Box  sx={{   bgcolor: 'background.primary', color: 'text.primary', }}>
+         <Box  sx={{   bgcolor: 'background.default', color: 'text.primary', }}>
             <HomePage/>
          
          </Box>
