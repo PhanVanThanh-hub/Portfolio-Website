@@ -2,7 +2,7 @@ import React ,{useLayoutEffect,useState} from 'react';
 import { makeStyles } from '@mui/styles';
 import { AppBar, Toolbar } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Model from '../../layout/components/layout-model/layoutModel';
+import Model from './Model';
 import DrawerUI from './Drawer';
 import image from '../../static/image/header/Pusheen_Zoom_Background_Campfire_2020.jpg';
 import useScrollTrigger from '@mui/material/useScrollTrigger';

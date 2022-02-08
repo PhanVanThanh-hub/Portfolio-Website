@@ -21,6 +21,7 @@ function PageAbout() {
    const classes = useStyles()
    let checked = useWindowPosition('information');
    const largeScreen = useMediaQuery('(min-width:480px)');
+   
    if(largeScreen===false){
       checked=true
    }

@@ -7,11 +7,12 @@ import InfoIcon from '@mui/icons-material/Info';
 import QuizIcon from '@mui/icons-material/Quiz';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const actions = [
    { icon: <AccountCircleIcon />, name: 'Intro',id:"information" },
    { icon: <InfoIcon />, name: 'About',id:"about" },
    { icon: <QuizIcon />, name: 'FAQ' ,id:"faq"},
+   { icon: <FavoriteBorderIcon />, name: 'WhatCanIDo',id:"ido" },
    { icon: <ViewListIcon />, name: 'List Product' ,id:"product"},
    { icon: <ContactMailIcon />, name: 'Contact' ,id:"contact"},
 ];

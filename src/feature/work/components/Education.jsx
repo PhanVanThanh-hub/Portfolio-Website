@@ -9,7 +9,6 @@ export default function Education() {
       ; (async () => {
          try {
             const res = await cvApi.getEducation()
-            const data = res.data[0]
             setData(res.data)
          } catch (error) {
             console.log("error:",error.message)

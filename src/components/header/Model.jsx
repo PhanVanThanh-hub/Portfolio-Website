@@ -1,9 +1,10 @@
+   
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import { changeMode } from '../../../components/UI/themeSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { changeMode } from '../UI/themeSlice';
+import { useDispatch } from 'react-redux';
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
    width: 62,
    height: 34,
@@ -56,8 +57,8 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 export default function Model() {
    
    const dispatch = useDispatch();
-   const mode = useSelector(state => state.mode.mode)
-   const onChangekModel = (event,c) => {
+   
+   const onChangeModel = (event,c) => {
       if(c===true){
          const action = changeMode({ mode: "light" });
          dispatch(action);
@@ -75,9 +76,10 @@ export default function Model() {
          sx={{margin:"0px 0px 0px 32px",'@media ( max-width: 480px)':{
             margin:"none"
        }}}
-         control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked onChange={onChangekModel}/>}
-         label="dsadsa"
+         control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked onChange={onChangeModel}/>}
+         label="Mode"
       />
    )
             
 }
+ 
