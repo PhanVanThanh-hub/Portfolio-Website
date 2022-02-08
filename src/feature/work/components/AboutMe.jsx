@@ -22,10 +22,17 @@ export default function AboutMe() {
    return (
       <Grid container spacing={2} sx={{color:"white"}}>
          <Grid item xs={12} sx={{display:"flex",}}>
-            <Avatar sx={{justifyContent:"center",width: "200px",height: "200px", border: '5px solid lightgray'}} src={image}></Avatar>
+            <Avatar sx={{justifyContent:"center",width: "200px",height: "200px", border: '5px solid lightgray','@media ( max-width: 480px)':{
+           display: "block",
+           marginLeft: "auto",
+           marginRight: "auto",
+         }}} src={image}></Avatar>
          </Grid>
-         <Grid item xs={12}>
-            <Typography sx={{fontWeight:"bold",letterSpacing:"0.08em",fontSize:"1.5em"}}>ABOUT ME</Typography>
+         <Grid item xs={12}  >
+            <Typography sx={{fontWeight:"bold",letterSpacing:"0.08em",fontSize:"1.5em",
+         '@media ( max-width: 480px)':{
+            textAlign:"center"
+         },}}>ABOUT ME</Typography>
          </Grid>
          <Grid item xs={12}>
             <Divider sx={{borderColor:"#26211e"}}/>

@@ -5,8 +5,10 @@ import StarIcon from '@mui/icons-material/Star';
 export default function Title() {
    return (
       <Grid container   sx={{color:"white"}}>
-         <Grid item xs={12}>
-            <Typography sx={{fontSize:"4em"}}>Phan Văn Thanh</Typography>
+         <Grid item xs={12} sx={{ }}>
+            <Typography sx={{fontSize:"4em",'@media ( max-width: 480px)':{
+            textAlign:"center"
+         },}}>Phan Văn Thanh</Typography>
          </Grid>
          <Grid item xs={12}>
             <Grid container>

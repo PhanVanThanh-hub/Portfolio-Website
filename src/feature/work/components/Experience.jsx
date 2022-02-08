@@ -20,7 +20,9 @@ export default function Experience() {
    return (
       <Grid container spacing={2} sx={{color:"white"}}>
          <Grid item xs={12}>
-            <Typography sx={{fontWeight:"bold",letterSpacing:"0.08em",fontSize:"1.5em"}}>EXPERIENCE</Typography>
+            <Typography sx={{fontWeight:"bold",letterSpacing:"0.08em",fontSize:"1.5em",'@media ( max-width: 480px)':{
+            textAlign:"center"
+         }}}>EXPERIENCE</Typography>
          </Grid>
          <Grid item xs={12}>
             <Divider sx={{borderColor:"#26211e"}}/>
